@@ -1,0 +1,16 @@
+[filter "lfs"]
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
+[user]
+    name = saku
+    email = saku2saku@gmail.com
+[credential]
+    helper = osxkeychain
+[core]
+    excludesfile = ~/.gitignore
+[push]
+    default = current
+[ghq]
+    root = ~/ghq
