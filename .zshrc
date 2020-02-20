@@ -62,6 +62,9 @@ export GOPATH=$HOME/.go
 export PATH=$HOME/.go/bin:$PATH
 export GHQ_ROOT=$HOME/ghq
 
+## for ruby
+[[ -d ~/.rbenv  ]] && export PATH=${HOME}/.rbenv/bin:${PATH} && eval "$(rbenv init -)"
+
 # Aliases
 alias ls='ls -G'
 alias rm='rm -i'
