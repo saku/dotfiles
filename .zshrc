@@ -83,7 +83,6 @@ function gcd() {
     return 1
   fi
   cd $GHQ_ROOT/$distination
-  zle accept-line
 }
 zle -N gcd
 bindkey '^j' gcd
