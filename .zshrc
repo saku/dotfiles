@@ -84,6 +84,10 @@ export GHQ_ROOT=$HOME/ghq
 ## for ruby
 [[ -d ~/.rbenv  ]] && export PATH=${HOME}/.rbenv/bin:${PATH} && eval "$(rbenv init -)"
 
+## for homebrew
+export PATH="/usr/local/sbin:$PATH"
+
+
 # Aliases
 alias ls='ls -G'
 alias rm='rm -i'
