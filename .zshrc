@@ -74,7 +74,10 @@ zstyle ':filter-select' case-insensitive yes
 
 # environment variables
 ## for nodebrew
-export PATH=$HOME/.nodebrew/current/bin:$HOME/.nodebrew/current/lib/node_modules/npm/bin:$PATH
+export PATH=$HOME/.nodebrew/current/bin:$HOME/.nodebrew/current/lib/node_modules/npm/bin:./node_modules/.bin:$PATH
+
+## for flutter
+export PATH=$PATH:$HOME/flutter/bin
 
 ## for go
 export GOPATH=$HOME/.go
@@ -87,6 +90,8 @@ export GHQ_ROOT=$HOME/ghq
 ## for homebrew
 export PATH="/usr/local/sbin:$PATH"
 
+## for dart tools
+export PATH="$PATH":"$HOME/.pub-cache/bin"
 
 # Aliases
 alias ls='ls -G'
