@@ -15,20 +15,20 @@ add-zsh-hook chpwd chpwd_recent_dirs
 
 # Load a few important annexes, without Turbo
 # (this is currently required for annexes)
-zinit load zdharma/history-search-multi-word
+zinit load zdharma-continuum/history-search-multi-word
 zinit load zsh-users/zsh-completions
 
 zinit light-mode for \
-    zinit-zsh/z-a-rust \
-    zinit-zsh/z-a-as-monitor \
-    zinit-zsh/z-a-patch-dl \
-    zinit-zsh/z-a-bin-gem-node \
+    zdharma-continuum/z-a-rust \
+    zdharma-continuum/z-a-as-monitor \
+    zdharma-continuum/z-a-patch-dl \
+    zdharma-continuum/z-a-bin-gem-node \
     zsh-users/zsh-autosuggestions \
-    zdharma/fast-syntax-highlighting \
+    zdharma-continuum/fast-syntax-highlighting \
     zsh-users/zaw
 
 zinit for \
-    zdharma/history-search-multi-word \
+    zdharma-continuum/history-search-multi-word \
     zsh-users/zsh-completions \
     light-mode pick"async.zsh" src"pure.zsh" \
     sindresorhus/pure
