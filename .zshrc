@@ -88,7 +88,7 @@ export GHQ_ROOT=$HOME/ghq
 [[ -d ~/.rbenv  ]] && export PATH=${HOME}/.rbenv/bin:${PATH} && eval "$(rbenv init -)"
 
 ## for homebrew
-export PATH="/usr/local/sbin:$PATH"
+export PATH="/opt/homebrew/bin:/usr/local/sbin:$PATH"
 
 ## for dart tools
 export PATH="$PATH":"$HOME/.pub-cache/bin"
