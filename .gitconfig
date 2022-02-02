@@ -4,7 +4,7 @@
     process = git-lfs filter-process
     required = true
 [user]
-    name = saku
+	name = Yoichiro Sakurai
     email = saku2saku@gmail.com
 [credential]
     helper = osxkeychain

@@ -126,3 +126,20 @@ function fssh() {
   ssh ${sshLoginHost}
 }
 
+function kx() {
+  local context=$(kubectl config get-contexts --no-headers=true | sed -e 's/^\*//' | awk '{print $1}' | fzf +m --query "$LBUFFER" --prompt="Select Kubernetes Context > ")
+  if [ "$context" = "" ]; then
+    zle redisplay
+    return 1
+  fi
+  kubectl config use-context $context
+}
+
+
+## gcloud
+PATH=$HOME/google-cloud-sdk/bin:$PATH
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '$HOME/google-cloud-sdk/path.zsh.inc' ]; then . '$HOME/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '$HOME/google-cloud-sdk/completion.zsh.inc' ]; then . '$HOME/google-cloud-sdk/completion.zsh.inc'; fi
