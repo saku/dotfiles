@@ -1,0 +1,181 @@
+[tasks.install_gui]
+category = "tools"
+description = "Update GUI tools"
+run_task = { name = [
+  "install_appcleaner",
+  "install_btt",
+  "install_clipy",
+  "install_contexts",
+  "install_discord",
+  "install_dropbox",
+#  "install_insomnia",
+  "install_google-chrome",
+  "install_google-japanese-ime",
+#  "install_postman",
+#  "install_qblocker",
+#  "install_rectangle",
+  "install_skitch",
+  "install_slack",
+  "install_tableplus",
+  "install_zoom",
+] }
+
+[tasks.install_appcleaner.mac]
+private = true
+script = [
+'''
+#!/usr/bin/env bash
+
+brew install --cask appcleaner
+'''
+]
+
+[tasks.install_btt.mac]
+private = true
+script = [
+'''
+#!/usr/bin/env bash
+
+brew install --cask bettertouchtool
+'''
+]
+
+[tasks.install_clipy.mac]
+private = true
+script = [
+'''
+#!/usr/bin/env bash
+
+brew install --cask clipy
+'''
+]
+
+[tasks.install_contexts.mac]
+private = true
+script = [
+'''
+#!/usr/bin/env bash
+
+brew install --cask contexts
+'''
+]
+
+[tasks.install_discord.mac]
+private = true
+script = [
+'''
+#!/usr/bin/env bash
+
+brew install --cask discord
+'''
+]
+
+[tasks.install_dropbox.mac]
+private = true
+script = [
+'''
+#!/usr/bin/env bash
+
+brew install --cask dropbox
+'''
+]
+
+[tasks.install_google-chrome.mac]
+private = true
+script = [
+'''
+#!/usr/bin/env bash
+
+brew install --cask google-chrome
+'''
+]
+
+[tasks.install_google-japanese-ime.mac]
+private = true
+script = [
+'''
+#!/usr/bin/env bash
+
+brew install --cask google-japanese-ime
+'''
+]
+
+[tasks.install_insomnia.mac]
+private = true
+script = [
+'''
+#!/usr/bin/env bash
+
+brew install --cask insomnia
+'''
+]
+
+[tasks.install_postman.mac]
+private = true
+script = [
+'''
+#!/usr/bin/env bash
+
+brew install --cask postman
+'''
+]
+
+[tasks.install_qblocker.mac]
+private = true
+script = [
+'''
+#!/usr/bin/env bash
+
+brew install --cask qblocker
+'''
+]
+
+[tasks.install_rectangle.mac]
+private = true
+script = [
+'''
+#!/usr/bin/env bash
+
+brew install --cask rectangle
+'''
+]
+
+[tasks.install_skitch.mac]
+private = true
+script = [
+'''
+#!/usr/bin/env bash
+
+brew install --cask skitch
+'''
+]
+
+[tasks.install_slack.mac]
+private = true
+script = [
+'''
+#!/usr/bin/env bash
+
+brew install --cask slack
+'''
+]
+
+[tasks.install_tableplus.mac]
+private = true
+script = [
+'''
+#!/usr/bin/env bash
+
+brew install --cask tableplus
+'''
+]
+
+[tasks.install_zoom.mac]
+private = true
+script = [
+'''
+#!/usr/bin/env bash
+
+brew install --cask zoom
+'''
+]

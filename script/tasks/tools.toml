@@ -1,0 +1,64 @@
+extend = [
+  { path = "tools/cli.toml" },
+  { path = "tools/gui.toml" },
+]
+
+[tasks.install_tools]
+category = "tools"
+description = "Install tools"
+run_task = { name = [
+  "install_cli",
+  "install_gui",
+]}
+
+[tasks.update_tools]
+run_task = [
+  { name = [
+    "update_package_tools",
+    "update_cli",
+    "update_rust_tools",
+  ] },
+]
+
+[tasks.update_package_tools.mac]
+private = true
+script = [
+'''
+#!/usr/bin/env bash
+
+brew update
+brew upgrade
+brew upgrade --cask
+'''
+]
+
+[tasks.update_package_tools.linux]
+private = true
+script = [
+'''
+#!/usr/bin/env bash
+
+sudo apt update -y
+sudo apt upgrade -y
+'''
+]
+
+[tasks.update_rust_tools]
+private = true
+command = "cargo"
+args = ["install-update", "--all"]
+
+[tasks.cleanup.mac]
+command = "brew"
+args = ["cleanup"]
+
+[tasks.cleanup.linux]
+script = [
+'''
+#!/usr/bin/env bash
+
+sudo apt autoremove -y
+sudo apt autoclean -y
+sudo apt clean -y
+'''
+]

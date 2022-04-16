@@ -1,0 +1,25 @@
+[tasks.setup_dotfiles]
+category = "dotfiles"
+description = "Clone dotfiles and set remote url"
+script = ['''
+#!/usr/bin/env bash
+
+if [ ! -d "$HOME/dotfiles" ] ; then
+  git clone https://github.com/saku/dotfiles.git $HOME/dotfiles
+fi
+cd $HOME/dotfiles
+git remote set-url origin git@github.com:saku/dotfiles.git
+''']
+
+[tasks.update_dotfiles]
+category = "dotfiles"
+description = "Update dotfiles"
+condition = { profiles = ["production"] }
+script = ['''
+#!/usr/bin/env bash
+
+cd $HOME/dotfiles
+git stash
+git switch master
+git pull --rebase origin master
+''']
