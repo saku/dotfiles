@@ -1,0 +1,16 @@
+name: macos
+on:
+  workflow_run:
+    workflows: ["lint"]
+    types:
+      - completed
+
+jobs:
+  setup-macos:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    runs-on: macos-latest
+    strategy:
+      fail-fast: false
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ./.github/workflows/composite-action

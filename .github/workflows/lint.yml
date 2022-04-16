@@ -1,0 +1,63 @@
+name: lint
+
+on: push
+#on:
+#  schedule:
+#    - cron:  '0 0 * * *'
+#  push:
+#    branches:
+#      - master
+#  pull_request:
+#    types:
+#      - opened
+#      - synchronize
+#      - reopened
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Set up Python 3.x
+      uses: actions/setup-python@v3
+      with:
+        python-version: '3.x'
+        architecture: 'x64'
+
+    - name: Display Python version
+      run: python -c "import sys; print(sys.version)"
+
+    - name: Install required packages
+      run: |
+        sudo apt full-upgrade -y && sudo apt install -y shellcheck
+        pip install --upgrade pip
+        pip install vim-vint yamllint
+#        pip install vim-vint yamllint tomlcheck
+
+    # Lint check
+    - name: Check script/install.sh
+      run: shellcheck ${GITHUB_WORKSPACE}/script/install.sh --exclude=SC1090,SC1091
+
+    - name: Check .zshrc
+      run: shellcheck ${GITHUB_WORKSPACE}/zsh/zshrc --exclude=SC2148,SC1090,SC1091
+
+    - name: Check nvim/init.vim
+      run: find $GITHUB_WORKSPACE -name "*.vim" | xargs vint -cst --enable-neovim
+
+    - name: Check yaml files
+      run: |
+        find $GITHUB_WORKSPACE -name "*.yml" | \
+          xargs yamllint -d "{ \
+            extends: relaxed, \
+            rules: { \
+              indentation: {spaces: 2}, \
+              line-length: {max: 100} \
+            } \
+          }"
+
+#    - name: Check nvim/*.toml
+#      run: |
+#        find ${GITHUB_WORKSPACE}/nvim/*.toml -type f | \
+#          xargs -I {} ${GITHUB_WORKSPACE}/tomlcheck --file {}

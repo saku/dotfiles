@@ -1,0 +1,16 @@
+name: linux
+on:
+  workflow_run:
+    workflows: ["lint"]
+    types:
+      - completed
+
+jobs:
+  setup-linux:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ./.github/workflows/composite-action
