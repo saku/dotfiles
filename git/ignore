@@ -1,0 +1,9 @@
+# For mac
+.DS_Store
+
+# For vim
+*.swp
+
+# JetBrain tools
+.idea
+*.iml
