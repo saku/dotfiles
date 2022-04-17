@@ -67,10 +67,7 @@ script = [
 '''
 #!/usr/bin/env bash
 
-if !(type asdf > /dev/null 2>&1); then
-  source $HOME/.asdf/asdf.sh
-fi
-
+source $HOME/.asdf/asdf.sh
 asdf plugin add python
 '''
 ]
@@ -81,6 +78,7 @@ script = [
 '''
 #!/usr/bin/env bash
 
+source $HOME/.asdf/asdf.sh
 curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python -
 '''
 ]

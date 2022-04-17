@@ -34,5 +34,5 @@ private = true
 script = ['''
 #!/usr/bin/env bash
 
-ln -snfv $HOME/dotfiles/tmux.conf $HOME/.tmux.conf
+ln -snfv $HOME/dotfiles/tmux/tmux.conf $HOME/.tmux.conf
 ''']

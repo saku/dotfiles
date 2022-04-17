@@ -3,7 +3,7 @@ category = "tools"
 description = "Install CLI tools"
 run_task = { name = [
   "install_bat",
-#  "install_dapr",
+  "install_dapr",
   "install_direnv",
   "install_exa",
   "install_fd",
@@ -157,7 +157,8 @@ script = [
 '''
 #!/usr/bin/env bash
 
-go get github.com/x-motemen/ghq
+source $HOME/.asdf/asdf.sh
+go install github.com/x-motemen/ghq@latest
 '''
 ]
 
@@ -167,7 +168,8 @@ script = [
 '''
 #!/usr/bin/env bash
 
-go get -u github.com/x-motemen/ghq
+source $HOME/.asdf/asdf.sh
+go install github.com/x-motemen/ghq@latest
 '''
 ]
 
