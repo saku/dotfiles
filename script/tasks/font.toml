@@ -52,6 +52,7 @@ set -eux -o pipefail
 
 FONT_NAME='PlemolJP_NF'
 
+sudo apt install -y fontconfig
 fc-cache -f -v ${HOME}/.fonts/"$FONT_NAME"
 '''
 ]
