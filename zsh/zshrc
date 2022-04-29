@@ -152,4 +152,4 @@ if [ -f "$HOME/.asdf/asdf.sh" ]; then source "$HOME/.asdf/asdf.sh"; fi
 
 
 ## profile
-if [ -f "$HOME/.profile" ]; then . "$HOME./profile"; fi
+if [ -f "$HOME/.profile" ]; then . "$HOME/.profile"; fi
