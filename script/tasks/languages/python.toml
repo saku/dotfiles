@@ -68,7 +68,10 @@ script = [
 #!/usr/bin/env bash
 
 source $HOME/.asdf/asdf.sh
-asdf plugin add python
+
+if [[ "python" != $(asdf plugin list | grep python) ]]; then 
+  asdf plugin add python
+fi
 '''
 ]
 

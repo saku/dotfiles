@@ -47,6 +47,8 @@ if !(type asdf > /dev/null 2>&1); then
   source $HOME/.asdf/asdf.sh
 fi
 
-asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git
+if [[ "nodejs" != $(asdf plugin list | grep nodejs) ]]; then 
+  asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git
+fi
 '''
 ]

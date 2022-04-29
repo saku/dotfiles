@@ -10,7 +10,7 @@ run_task = { name = [
   "install_dropbox",
 #  "install_insomnia",
   "install_google-chrome",
-  "install_google-japanese-ime",
+#  "install_google-japanese-ime",
 #  "install_postman",
 #  "install_qblocker",
 #  "install_rectangle",
