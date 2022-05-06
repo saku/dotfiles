@@ -81,7 +81,7 @@ if [ ! -d $HOME/.config/git/local ]; then
   touch $HOME/.config/git/local/config
 fi
 
-echo '[user]' >> $HOME/.config/git/local/config
+echo '[user]' > $HOME/.config/git/local/config
 echo -e "\tname = $GIT_NAME" >> $HOME/.config/git/local/config
 echo -e "\temail = $GIT_EMAIL" >> $HOME/.config/git/local/config
 '''
