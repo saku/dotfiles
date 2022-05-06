@@ -1,0 +1,12 @@
+# file delete
+bind status D !rm %(file)
+
+# merge command
+bind refs M ?git merge %(branch)
+
+# rebase command
+bind main R !git rebase -i %(commit)
+bind refs R ?git rebase -i %(branch)
+
+# stash
+bind stash U ?git stash push -u "%(prompt Enter stash comment: )"
