@@ -25,8 +25,8 @@ if [ $OS == "Linux" ]; then
 #  sudo apt autoremove -y
 elif [ $OS == "macOS" ]; then
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-  echo 'eval $(/opt/homebrew/bin/brew shellenv)' >> "$HOME/.zprofile"
-  eval $(/opt/homebrew/bin/brew shellenv)
+  echo "eval $(/opt/homebrew/bin/brew shellenv)" >> "$HOME/.zprofile"
+  eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
