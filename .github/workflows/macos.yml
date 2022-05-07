@@ -13,3 +13,5 @@ jobs:
       fail-fast: false
     steps:
       - uses: ./.github/workflows/composite-action
+        with:
+          commitHash: ${{ github.sha }}
