@@ -9,6 +9,9 @@ inputs:
 runs:
   using: "composite"
   steps:
+  - name: Check param
+    shell: bash
+    run: echo ${{ inputs.commitHash }}
   - name: "Checkout"
     uses: actions/checkout@v3
     with:
