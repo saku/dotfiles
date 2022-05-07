@@ -18,11 +18,7 @@ script = [
 #!/usr/bin/env bash
 set -eux -o pipefail
 
-if (brew list --formula | grep git > /dev/null); then
-  brew upgrade git
-else
-  brew install git
-fi
+brew install git
 '''
 ]
 
@@ -81,7 +77,7 @@ if [ ! -d $HOME/.config/git/local ]; then
   touch $HOME/.config/git/local/config
 fi
 
-echo '[user]' >> $HOME/.config/git/local/config
+echo '[user]' > $HOME/.config/git/local/config
 echo -e "\tname = $GIT_NAME" >> $HOME/.config/git/local/config
 echo -e "\temail = $GIT_EMAIL" >> $HOME/.config/git/local/config
 '''
@@ -94,11 +90,7 @@ script = [
 #!/usr/bin/env bash
 set -eux -o pipefail
 
-if (brew list --formula | grep tig > /dev/null); then
-  brew upgrade tig
-else
-  brew install tig
-fi
+brew install tig
 '''
 ]
 
