@@ -14,5 +14,5 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          commitHash: ${{ github.sha }}
+          ref: ${{ github.sha }}
       - uses: ./.github/workflows/composite-action
