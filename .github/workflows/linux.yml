@@ -1,18 +1,23 @@
 name: linux
-on:
-  workflow_run:
-    workflows: ["lint"]
-    types:
-      - completed
+
+on: push
+#on:
+#  schedule:
+#    - cron:  '0 0 * * *'
+#  push:
+#    branches:
+#      - master
+#  pull_request:
+#    types:
+#      - opened
+#      - synchronize
+#      - reopened
 
 jobs:
   setup-linux:
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
     steps:
       - uses: actions/checkout@v3
-        with:
-          ref: ${{ github.sha }}
       - uses: ./.github/workflows/composite-action
