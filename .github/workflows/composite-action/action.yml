@@ -1,19 +1,8 @@
 name: "Install composite action"
 description: "Checks out the repository and install tools"
-inputs:
-  commitHash:
-    description: 'Commit hash for CI'
-    required: true
 runs:
   using: "composite"
   steps:
-  - name: "Checkout"
-    uses: actions/checkout@v3
-    with:
-      ref: ${{ inputs.commitHash }}
-  - name: Check param
-    shell: bash
-    run: echo ${{ inputs.commitHash }}
   - name: Run install.sh
     shell: bash
     run: ./script/install.sh

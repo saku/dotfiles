@@ -12,6 +12,7 @@ jobs:
     strategy:
       fail-fast: false
     steps:
-      - uses: ./.github/workflows/composite-action
+      - uses: actions/checkout@v3
         with:
           commitHash: ${{ github.sha }}
+      - uses: ./.github/workflows/composite-action
