@@ -18,7 +18,12 @@ script = [
 #!/usr/bin/env bash
 set -eux -o pipefail
 
-brew install git
+result=0
+git --version || result=$?
+
+if [ ! "$result" = "0" ]; then
+  brew install git
+fi
 '''
 ]
 
