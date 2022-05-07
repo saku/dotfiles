@@ -12,7 +12,4 @@ jobs:
     strategy:
       fail-fast: false
     steps:
-      - uses: actions/checkout@v3
-        with:
-          ref: ${{ github.ref }}
       - uses: ./.github/workflows/composite-action
