@@ -224,7 +224,7 @@ script = [
 #!/usr/bin/env bash
 
 cargo install zoxide
-echo 'eval "$(zoxide init bash)"' >> $HOME/.profile
+echo 'eval "$(zoxide init zsh)"' >> $HOME/.profile
 '''
 ]
 
