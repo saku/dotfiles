@@ -36,7 +36,7 @@ zinit for \
     sindresorhus/pure
 
 ## asdf
-if type asdf > /dev/null 2>&1; then
+if [ -f "$HOME/.asdf/asdf.sh" ]; then
   zinit ice lucid as'program' src'asdf.sh'
   zinit load asdf-vm/asdf
 fi
