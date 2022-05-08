@@ -31,9 +31,7 @@ zinit light-mode for \
 
 zinit for \
     zdharma-continuum/history-search-multi-word \
-    zsh-users/zsh-completions \
-    light-mode pick"async.zsh" src"pure.zsh" \
-    sindresorhus/pure
+    zsh-users/zsh-completions
 
 ## asdf
 if [ -f "$HOME/.asdf/asdf.sh" ]; then
