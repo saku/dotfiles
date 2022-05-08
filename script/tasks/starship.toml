@@ -30,6 +30,7 @@ script = [
 #!/usr/bin/env bash
 
 ln -snfv ~/dotfiles/starship/starship.toml ~/.config/
+echo 'eval "$(starship init zsh)"' >> $HOME/.profile
 '''
 ]
 
