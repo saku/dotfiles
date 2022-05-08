@@ -31,12 +31,10 @@ zinit light-mode for \
 
 zinit for \
     zdharma-continuum/history-search-multi-word \
-    zsh-users/zsh-completions \
-    light-mode pick"async.zsh" src"pure.zsh" \
-    sindresorhus/pure
+    zsh-users/zsh-completions
 
 ## asdf
-if type asdf > /dev/null 2>&1; then
+if [ -f "$HOME/.asdf/asdf.sh" ]; then
   zinit ice lucid as'program' src'asdf.sh'
   zinit load asdf-vm/asdf
 fi
