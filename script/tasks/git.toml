@@ -18,10 +18,7 @@ script = [
 #!/usr/bin/env bash
 set -eux -o pipefail
 
-result=0
-git --version || result=$?
-
-if [ ! "$result" = "0" ]; then
+if !(type git > /dev/null 2>&1); then
   brew install git
 fi
 '''
@@ -34,9 +31,11 @@ script = [
 #!/usr/bin/env bash
 set -eux -o pipefail
 
-sudo -E add-apt-repository -y ppa:git-core/ppa
-sudo apt update -y
-sudo apt install -y git
+if !(type git > /dev/null 2>&1); then
+  sudo -E add-apt-repository -y ppa:git-core/ppa
+  sudo apt update -y
+  sudo apt install -y git
+fi
 '''
 ]
 
@@ -95,7 +94,9 @@ script = [
 #!/usr/bin/env bash
 set -eux -o pipefail
 
-brew install tig
+if !(type tig > /dev/null 2>&1); then
+  brew install tig
+fi
 '''
 ]
 

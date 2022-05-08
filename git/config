@@ -1,6 +1,10 @@
 [include]
     path = ~/.config/git/local/config
 
+[core]
+	quotepath = false
+	pager = delta
+
 [filter "lfs"]
     clean = git-lfs clean -- %f
     smudge = git-lfs smudge -- %f
@@ -25,3 +29,6 @@
     syntax-theme = Monokai Extended
     line-numbers = true
     colorMoved = default
+
+[interactive]
+	diffFilter = delta --color-only

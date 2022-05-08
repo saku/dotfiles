@@ -36,16 +36,20 @@ zinit for \
     sindresorhus/pure
 
 ## asdf
-zinit ice lucid as'program' src'asdf.sh'
-zinit load asdf-vm/asdf
+if type asdf > /dev/null 2>&1; then
+  zinit ice lucid as'program' src'asdf.sh'
+  zinit load asdf-vm/asdf
+fi
 
 ## direnv
-zinit ice lucid from'gh-r' as'program' mv'direnv* -> direnv' \
+if type direnv > /dev/null 2>&1; then
+  zinit ice lucid from'gh-r' as'program' mv'direnv* -> direnv' \
       atclone'./direnv hook zsh > zhook.zsh' atpull'%atclone' \
       pick'direnv' src='zhook.zsh'
-zinit load direnv/direnv
-export DIRENV_LOG_FORMAT=  # 標準出力を抑える
-export DIRENV_WARN_TIMEOUT=1h  # venv 作成に時間が掛かると出てくる警告を抑える
+  zinit load direnv/direnv
+  export DIRENV_LOG_FORMAT=  # 標準出力を抑える
+  export DIRENV_WARN_TIMEOUT=1h  # venv 作成に時間が掛かると出てくる警告を抑える
+fi
 
 if [ -e /usr/local/share/zsh-completions ]; then
   fpath=(/usr/local/share/zsh-completions "$fpath")
@@ -88,11 +92,10 @@ zstyle ':completion:*' recent-dirs-insert both
 zstyle ':filter-select' case-insensitive yes
 
 # environment variables
-## for nodebrew
-export PATH=$HOME/.nodebrew/current/bin:$HOME/.nodebrew/current/lib/node_modules/npm/bin:./node_modules/.bin:$PATH
-
 ## for flutter
 export PATH=$PATH:$HOME/flutter/bin
+## for dart tools
+export PATH="$PATH:$HOME/.pub-cache/bin"
 
 ## for go
 export GHQ_ROOT=$HOME/ghq
@@ -102,15 +105,6 @@ export GHQ_ROOT=$HOME/ghq
 
 ## for homebrew
 export PATH="/opt/homebrew/bin:/usr/local/sbin:$PATH"
-
-## for dart tools
-export PATH="$PATH:$HOME/.pub-cache/bin"
-
-# Aliases
-alias ls='ls -G'
-alias rm='rm -i'
-alias gitback='git checkout `git reflog | grep "moving from" | cut -d " " -f6 | head -n 1`'
-alias bundler='bundle install --path=vendor/bundle --binstubs=vendor/bin'
 
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -161,3 +155,27 @@ if [ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/google-clou
 
 ## profile
 if [ -f "$HOME/.profile" ]; then . "$HOME/.profile"; fi
+
+# Aliases
+## ls
+if type exa > /dev/null 2>&1; then
+	alias ls='exa'
+else
+  alias ls='ls -G'
+fi
+
+## find
+if type fd > /dev/null 2>&1; then
+	alias find='fd'
+fi
+
+## cat
+if type bat > /dev/null 2>&1; then
+	alias cat='bat'
+fi
+
+## rm
+alias rm='rm -i'
+
+## ruby(bundler)
+alias bundler='bundle install --path=vendor/bundle --binstubs=vendor/bin'
