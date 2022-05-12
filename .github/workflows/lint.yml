@@ -43,8 +43,8 @@ jobs:
     - name: Check .zshrc
       run: shellcheck ${GITHUB_WORKSPACE}/zsh/zshrc --exclude=SC2148,SC1090,SC1091
 
-    - name: Check nvim/init.vim
-      run: find $GITHUB_WORKSPACE -name "*.vimrc" | xargs vint -cst
+#    - name: Check vimrc
+#      run: find $GITHUB_WORKSPACE -name "*.vimrc" | xargs vint -cst
 
     - name: Check yaml files
       run: |
