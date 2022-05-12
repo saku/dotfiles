@@ -44,7 +44,7 @@ jobs:
       run: shellcheck ${GITHUB_WORKSPACE}/zsh/zshrc --exclude=SC2148,SC1090,SC1091
 
     - name: Check nvim/init.vim
-      run: find $GITHUB_WORKSPACE -name "*.vim" | xargs vint -cst --enable-neovim
+      run: find $GITHUB_WORKSPACE -name "*.vimrc" | xargs vint -cst
 
     - name: Check yaml files
       run: |
