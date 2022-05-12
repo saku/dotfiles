@@ -1,0 +1,29 @@
+[tasks.setup_vim]
+category = "vim"
+description = "Setup vim"
+run_task = { name = [
+  "install_dein",
+  "link_vim",
+] }
+
+[tasks.install_dein]
+private = true
+script = [
+'''
+#!/usr/bin/env bash
+
+curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > $HOME/installer.sh
+sh $HOME/installer.sh $HOME/.cache/dein
+rm $HOME/installer.sh
+'''
+]
+
+[tasks.link_vim]
+private = true
+script = [
+'''
+#!/usr/bin/env bash
+
+ln -snfv $HOME/dotfiles/vimrc/vimrc $HOME/.vimrc
+'''
+]
