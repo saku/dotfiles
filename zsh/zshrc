@@ -90,6 +90,9 @@ zstyle ':completion:*' recent-dirs-insert both
 zstyle ':filter-select' case-insensitive yes
 
 # environment variables
+## for word delete and move.
+export WORDCHARS="*?_[]~&;=!#$%^(){}<>"
+
 ## for flutter
 export PATH=$PATH:$HOME/flutter/bin
 ## for dart tools
