@@ -3,14 +3,7 @@ name: macos
 on:
   schedule:
     - cron:  '0 0 * * *'
-  push:
-    branches:
-      - master
-  pull_request:
-    types:
-      - opened
-      - synchronize
-      - reopened
+  push
 
 jobs:
   setup-macos:
