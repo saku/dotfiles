@@ -9,6 +9,11 @@ if [ ! -d "$HOME/dotfiles" ] ; then
 fi
 cd $HOME/dotfiles
 git remote set-url origin git@github.com:saku/dotfiles.git
+
+# only exec from github actions.
+if [ -n "$GITHUB_SHA" ]; then
+  git checkout "$GITHUB_SHA"
+fi
 ''']
 
 [tasks.update_dotfiles]
