@@ -77,6 +77,8 @@ script = [
 set -eux -o pipefail
 
 if [ ! -d $HOME/.config/git/local ]; then
+  ls -al $HOME/dotfiles
+  ls -al $HOME/dotfiles/git
   ls -al $HOME/.config
   ls -al $HOME/.config/git
   mkdir "$HOME/.config/git/local"
