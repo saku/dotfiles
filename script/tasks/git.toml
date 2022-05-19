@@ -77,7 +77,7 @@ script = [
 set -eux -o pipefail
 
 if [ ! -d $HOME/.config/git/local ]; then
-  mkdir -p "$(readlink --canonicalize $HOME/.config/git)/local" || mkdir -p "$(realpath $HOME/.config/git)/local"
+  mkdir -p "$(cd $(dirname $HOME/.config/git) ; pwd -P)/local"
   touch $HOME/.config/git/local/config
 fi
 
