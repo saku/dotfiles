@@ -1,0 +1,124 @@
+[tasks.setup_git]
+condition = { env_set = ["GIT_NAME", "GIT_EMAIL"] }
+run_task = [
+  { name = [
+    "install_git",
+    "link_git",
+    "gen_ssh_key",
+    "gen_git_local",
+    "install_tig",
+    "link_tig"
+  ] },
+]
+
+[tasks.install_git.mac]
+private = true
+script = [
+'''
+#!/usr/bin/env bash
+set -eux -o pipefail
+
+if !(type git > /dev/null 2>&1); then
+  brew install git
+fi
+'''
+]
+
+[tasks.install_git.linux]
+private = true
+script = [
+'''
+#!/usr/bin/env bash
+set -eux -o pipefail
+
+if !(type git > /dev/null 2>&1); then
+  sudo -E add-apt-repository -y ppa:git-core/ppa
+  sudo apt update -y
+  sudo apt install -y git
+fi
+'''
+]
+
+[tasks.link_git]
+private = true
+script = [
+'''
+#!/usr/bin/env bash
+set -eux -o pipefail
+
+if [ ! -d "$HOME/.config" ] ; then
+  mkdir $HOME/.config
+fi
+ln -snfv $HOME/dotfiles/git $HOME/.config/git
+'''
+]
+
+[tasks.gen_ssh_key]
+private = true
+condition = { profiles = ["production"], env_set = ["GIT_NAME", "GIT_EMAIL"] }
+script = [
+'''
+#!/usr/bin/env bash
+set -eux -o pipefail
+
+if [ ! -d "$HOME/.ssh" ] ; then
+  mkdir -m 700 $HOME/.ssh
+fi
+
+ssh-keygen -t ed25519 -N "" -C "$GIT_EMAIL" -f $HOME/.ssh/id_ed25519
+'''
+]
+
+[tasks.gen_git_local]
+private = true
+script = [
+'''
+#!/usr/bin/env bash
+set -eux -o pipefail
+
+if [ ! -d $HOME/.config/git/local ]; then
+  mkdir -p "$HOME/.config/git/local"
+  touch $HOME/.config/git/local/config
+fi
+
+echo '[user]' > $HOME/.config/git/local/config
+echo -e "\tname = $GIT_NAME" >> $HOME/.config/git/local/config
+echo -e "\temail = $GIT_EMAIL" >> $HOME/.config/git/local/config
+'''
+]
+
+[tasks.install_tig.mac]
+private = true
+script = [
+'''
+#!/usr/bin/env bash
+set -eux -o pipefail
+
+if !(type tig > /dev/null 2>&1); then
+  brew install tig
+fi
+'''
+]
+
+[tasks.install_tig.linux]
+private = true
+script = [
+'''
+#!/usr/bin/env bash
+set -eux -o pipefail
+
+sudo apt update -y
+sudo apt install -y tig
+'''
+]
+
+[tasks.link_tig]
+private = true
+script = [
+'''
+#!/usr/bin/env bash
+set -eux -o pipefail
+
+ln -snfv $HOME/dotfiles/tig/tigrc $HOME/.tigrc
+'''
+]

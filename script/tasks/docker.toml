@@ -1,0 +1,168 @@
+[tasks.setup_docker.mac]
+category = "Docker"
+description = "Install Docker"
+dependencies = [
+  "setup_docker_for_mac",
+#  "setup_lima",
+  "install_docker",
+  "install_docker-compose",
+]
+
+[tasks.setup_docker_for_mac.mac]
+private = true
+script = [
+'''
+#!/usr/bin/env bash
+set -eux -o pipefail
+
+brew install --cask docker
+'''
+]
+
+[tasks.setup_lima.mac]
+private = true
+dependencies = [
+  "install_lima",
+  "upgrade_filedescriptor",
+  "create_lima_docker_machine",
+  "setup_lima_context",
+]
+
+[tasks.install_lima.mac]
+private = true
+script = [
+'''
+#!/usr/bin/env bash
+set -eux -o pipefail
+
+brew install lima
+'''
+]
+
+[tasks.upgrade_filedescriptor.mac]
+private = true
+condition = { profiles = ["production"] }
+script = [
+'''
+#!/usr/bin/env bash
+set -eux -o pipefail
+
+ln -snfv ~/dotfiles/lima/limit.maxfiles.plist /Library/LaunchDaemons
+sudo chown root /Library/LaunchDaemons/limit.maxfiles.plist
+sudo launchctl load -w /Library/LaunchDaemons/limit.maxfiles.plist
+'''
+]
+
+[tasks.create_lima_docker_machine.mac]
+private = true
+script = [
+'''
+#!/usr/bin/env bash
+set -eux -o pipefail
+
+limactl start ~/dotfiles/lima/docker.yml
+'''
+]
+
+[tasks.setup_lima_context.mac]
+private = true
+script = [
+'''
+#!/usr/bin/env bash
+set -eux -o pipefail
+
+CONTEXT_NAME='lima-docker'
+CONTEXT_DESCRIPTION='Use lima docker'
+CONTEXT_DOCKER_HOST="unix://$HOME/.lima/docker/sock/docker.sock"
+CONTEXT_DEFAULT_STACK_ORCHESTRATOR='swarm'
+
+docker context create "$CONTEXT_NAME" \
+  --description "$CONTEXT_DESCRIPTION" \
+  --docker host="$CONTEXT_DOCKER_HOST" \
+  --default-stack-orchestrator="$CONTEXT_DEFAULT_STACK_ORCHESTRATOR"
+
+docker context use "$CONTEXT_NAME"
+'''
+]
+
+[tasks.install_docker.mac]
+private = true
+script = [
+'''
+#!/usr/bin/env bash
+set -eux -o pipefail
+
+brew install docker
+'''
+]
+
+[tasks.install_docker-compose.mac]
+private = true
+script = [
+'''
+#!/usr/bin/env bash
+set -eux -o pipefail
+
+brew install docker-compose
+'''
+]
+
+[tasks.update_docker-compose.mac]
+category = "Docker"
+description = "Update docker compose"
+alias = "install_docker-compose"
+
+[tasks.setup_docker.linux]
+category = "Docker"
+description = "Install Docker"
+dependencies = ["install_docker", "install_docker-compose"]
+
+[tasks.install_docker.linux]
+private = true
+category = "Docker"
+description = "Install Docker"
+script = [
+'''
+#!/usr/bin/env bash
+set -eux -o pipefail
+
+sudo apt update -y
+sudo apt install -y apt-transport-https ca-certificates curl software-properties-common
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+
+if [ "$(arch)" == "aarch64" ]; then
+  sudo add-apt-repository "deb [arch=arm64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+else
+  sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+fi
+
+sudo apt install -y docker-ce
+'''
+]
+
+[tasks.install_docker-compose.linux]
+private = true
+category = "Docker"
+description = "Install docker-compose"
+script = [
+'''
+#!/usr/bin/env bash
+set -eux -o pipefail
+
+sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+'''
+]
+
+[tasks.update_docker-compose.linux]
+category = "Docker"
+description = "Update docker compose"
+script = [
+'''
+#!/usr/bin/env bash
+set -eux -o pipefail
+
+docker-compose migrate-to-labels
+'''
+]

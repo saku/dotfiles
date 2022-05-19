@@ -1,0 +1,52 @@
+extend = [
+  { path = "tasks/alacritty.toml" },
+  { path = "tasks/asdf.toml" },
+  { path = "tasks/docker.toml" },
+  { path = "tasks/dotfiles.toml" },
+  { path = "tasks/zsh.toml" },
+  { path = "tasks/font.toml" },
+  { path = "tasks/git.toml" },
+  { path = "tasks/language.toml" },
+  { path = "tasks/vim.toml" },
+  { path = "tasks/starship.toml" },
+  { path = "tasks/tmux.toml" },
+  { path = "tasks/tools.toml" },
+]
+
+[tasks.setup]
+condition = { env_set = [
+  "NODE_VERSION",
+  "GIT_NAME",
+  "GIT_EMAIL",
+] }
+run_task = [
+  { name = [
+    "setup_dotfiles",
+    "setup_git",
+    "setup_zsh",
+    "setup_tmux",
+#    "setup_alacritty",
+    "setup_asdf",
+    "setup_languages",
+    "install_tools",
+    "setup_starship",
+    "setup_vim",
+    "setup_docker",
+    "setup_font",
+    "cleanup",
+  ] },
+]
+
+[tasks.update]
+run_task = [
+  { name = [
+    "update_dotfiles",
+    "update_asdf",
+    "update_languages",
+#    "update_alacritty",
+    "update_tools",
+    "update_starship",
+    "update_docker-compose",
+    "cleanup",
+  ] },
+]

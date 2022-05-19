@@ -1,0 +1,39 @@
+[tasks.setup_zsh]
+category = "zsh"
+description = "Setup zsh shell"
+run_task = { name = ["install_zsh", "link_zsh"] }
+
+[tasks.install_zsh.mac]
+private = true
+script = [
+'''
+#!/usr/bin/env bash
+
+echo "nothing to do!"
+'''
+]
+
+[tasks.install_zsh.linux]
+private = true
+script = [
+'''
+#!/usr/bin/env bash
+
+sudo apt install -y zsh
+'''
+]
+
+[tasks.link_zsh]
+private = true
+script = [
+'''
+#!/usr/bin/env bash
+
+mkdir -p $HOME/.config/zsh/functions
+mkdir -p $HOME/.config/zsh/completions
+
+ln -snfv $HOME/dotfiles/zsh/zshrc $HOME/.zshrc
+#ln -snfv $HOME/dotfiles/zsh/functions/* $HOME/.config/zsh/functions
+#ln -snfv $HOME/dotfiles/zsh/completions/* $HOME/.config/zsh/completions
+'''
+]
