@@ -35,7 +35,5 @@ mkdir -p $HOME/.config/zsh/completions
 ln -snfv $HOME/dotfiles/zsh/zshrc $HOME/.zshrc
 #ln -snfv $HOME/dotfiles/zsh/functions/* $HOME/.config/zsh/functions
 #ln -snfv $HOME/dotfiles/zsh/completions/* $HOME/.config/zsh/completions
-ls -al $HOME
-cat $HOME/.zshrc
 '''
 ]
