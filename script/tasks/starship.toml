@@ -1,0 +1,40 @@
+[tasks.setup_starship]
+category = "tools"
+description = "Setup starship"
+run_task = { name = ["install_starship", "link_starship"] }
+
+[tasks.install_starship.linux]
+private = true
+script = [
+'''
+#!/usr/bin/env bash
+
+sh -c "$(curl -fsSL https://starship.rs/install.sh)" -- -y
+'''
+]
+
+[tasks.install_starship.mac]
+private = true
+script = [
+'''
+#!/usr/bin/env bash
+
+brew install starship
+'''
+]
+
+[tasks.link_starship]
+private = true
+script = [
+'''
+#!/usr/bin/env bash
+
+ln -snfv ~/dotfiles/starship/starship.toml ~/.config/
+echo 'eval "$(starship init zsh)"' >> $HOME/.profile
+'''
+]
+
+[tasks.update_starship]
+category = "tools"
+description = "Update starship"
+alias = "install_starship"

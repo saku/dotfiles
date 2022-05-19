@@ -1,0 +1,34 @@
+[include]
+    path = ~/.config/git/local/config
+
+[core]
+	quotepath = false
+	pager = delta
+
+[filter "lfs"]
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
+
+[commit]
+    template = ~/.config/git/commit
+
+[credential]
+    helper = osxkeychain
+
+[push]
+    default = current
+
+[ghq]
+    root = ~/ghq
+
+[delta]
+    plus-color = "#012800"
+    minus-color = "#340001"
+    syntax-theme = Monokai Extended
+    line-numbers = true
+    colorMoved = default
+
+[interactive]
+	diffFilter = delta --color-only

@@ -1,0 +1,48 @@
+[tasks.install_go]
+category = "languages"
+description = "Install Go"
+dependencies = ["asdf_go_plugin"]
+script = [
+'''
+#!/usr/bin/env bash
+
+if !(type asdf > /dev/null 2>&1); then
+  source $HOME/.asdf/asdf.sh
+fi
+
+asdf install golang latest
+asdf global golang latest
+'''
+]
+
+[tasks.update_go]
+category = "languages"
+description = "Update Go"
+script = [
+'''
+#!/usr/bin/env bash
+
+if !(type asdf > /dev/null 2>&1); then
+  source $HOME/.asdf/asdf.sh
+fi
+
+asdf install golang latest
+asdf global golang latest
+'''
+]
+
+[tasks.asdf_go_plugin]
+private = true
+script = [
+'''
+#!/usr/bin/env bash
+
+if !(type asdf > /dev/null 2>&1); then
+  source $HOME/.asdf/asdf.sh
+fi
+
+if [[ "golang" != $(asdf plugin list | grep golang) ]]; then 
+  asdf plugin add golang https://github.com/kennyp/asdf-golang.git
+fi
+'''
+]

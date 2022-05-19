@@ -1,0 +1,249 @@
+[tasks.install_cli]
+category = "tools"
+description = "Install CLI tools"
+run_task = { name = [
+  "install_bat",
+  "install_dapr",
+  "install_direnv",
+  "install_exa",
+  "install_fd",
+  "install_fzf",
+  "install_ghq",
+  "install_git-delta",
+  "install_jq",
+  "install_ripgrep",
+  "install_zoxide",
+  "install_cargo-watch",
+  "install_cargo-update",
+] }
+
+[tasks.update_cli]
+category = "tools"
+description = "Update CLI tools"
+run_task = { name = ["update_dapr", "update_ghq"] }
+
+# bat
+[tasks.install_bat]
+private = true
+script = [
+'''
+#!/usr/bin/env bash
+
+cargo install --locked bat
+'''
+]
+dependencies = ["dependencies_bat"]
+
+[tasks.dependencies_bat.linux]
+private = true
+script = [
+'''
+#!/usr/bin/env bash
+
+sudo apt install -y libclang-dev
+'''
+]
+
+# dapr
+[tasks.install_dapr.mac]
+private = true
+condition = { profiles = ["production"] }
+script = [
+'''
+#!/usr/bin/env bash
+
+curl -fsSL https://raw.githubusercontent.com/dapr/cli/master/install/install.sh | /bin/bash
+'''
+]
+
+[tasks.install_dapr.linux]
+private = true
+condition = { profiles = ["production"] }
+script = [
+'''
+#!/usr/bin/env bash
+
+wget -q https://raw.githubusercontent.com/dapr/cli/master/install/install.sh -O - | /bin/bash
+'''
+]
+
+[tasks.update_dapr]
+private = true
+alias = "install_dapr"
+
+# direnv
+[tasks.install_direnv.mac]
+private = true
+script = [
+'''
+#!/usr/bin/env bash
+
+brew install direnv
+'''
+]
+
+[tasks.install_direnv.linux]
+private = true
+script = [
+'''
+#!/usr/bin/env bash
+
+sudo apt install -y direnv
+echo 'export EDITOR=nvim' >> $HOME/.profile
+echo 'eval "$(direnv hook bash)"' >> $HOME/.profile
+'''
+]
+
+# exa
+[tasks.install_exa]
+private = true
+script = [
+'''
+#!/usr/bin/env bash
+
+cargo install exa
+'''
+]
+
+# fd
+[tasks.install_fd]
+private = true
+script = [
+'''
+#!/usr/bin/env bash
+
+cargo install fd-find 
+'''
+]
+
+# fzf
+[tasks.install_fzf.mac]
+private = true
+script = [
+'''
+#!/usr/bin/env bash
+
+brew install fzf
+yes | $(brew --prefix)/opt/fzf/install
+'''
+]
+
+[tasks.install_fzf.linux]
+private = true
+script = [
+'''
+#!/usr/bin/env bash
+
+git clone --depth 1 https://github.com/junegunn/fzf.git $HOME/.fzf
+ls -al $HOME
+yes | $HOME/.fzf/install
+'''
+]
+
+# ghq
+[tasks.install_ghq.mac]
+private = true
+script = [
+'''
+#!/usr/bin/env bash
+
+brew install ghq
+'''
+]
+
+[tasks.install_ghq.linux]
+private = true
+script = [
+'''
+#!/usr/bin/env bash
+
+source $HOME/.asdf/asdf.sh
+go install github.com/x-motemen/ghq@latest
+'''
+]
+
+[tasks.update_ghq.linux]
+private = true
+script = [
+'''
+#!/usr/bin/env bash
+
+source $HOME/.asdf/asdf.sh
+go install github.com/x-motemen/ghq@latest
+'''
+]
+
+# git-delta
+[tasks.install_git-delta]
+private = true
+script = [
+'''
+#!/usr/bin/env bash
+
+cargo install git-delta
+'''
+]
+
+# jq
+[tasks.install_jq.mac]
+private = true
+script = [
+'''
+#!/usr/bin/env bash
+
+brew install jq 
+'''
+]
+
+[tasks.install_jq.linux]
+private = true
+script = [
+'''
+#!/usr/bin/env bash
+
+sudo apt install -y jq
+'''
+]
+
+# ripgrep
+[tasks.install_ripgrep]
+private = true
+script = [
+'''
+#!/usr/bin/env bash
+
+cargo install ripgrep
+'''
+]
+
+# zoxide
+[tasks.install_zoxide]
+private = true
+script = [
+'''
+#!/usr/bin/env bash
+
+cargo install zoxide
+echo 'eval "$(zoxide init zsh)"' >> $HOME/.profile
+'''
+]
+
+[tasks.install_cargo-watch]
+private = true
+script = [
+'''
+#!/usr/bin/env bash
+
+cargo install cargo-watch
+'''
+]
+
+[tasks.install_cargo-update]
+private = true
+script = [
+'''
+#!/usr/bin/env bash
+
+cargo install cargo-update
+'''
+]

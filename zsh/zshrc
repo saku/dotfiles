@@ -1,16 +1,18 @@
-
 ### Added by Zinit's installer
 if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
     print -P "%F{33}▓▒░ %F{220}Installing %F{33}DHARMA%F{219} Initiative Plugin Manager (%F{33}zdharma/zinit%F{220})…%f"
     command mkdir -p "$HOME/.zinit" && command chmod g-rwX "$HOME/.zinit"
-    command git clone https://github.com/zdharma-continuum/zinit "$HOME/.zinit/bin" && \
-        print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
+    if ! command git clone https://github.com/zdharma-continuum/zinit "$HOME/.zinit/bin"; then    
+        print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b"
+    else
         print -P "%F{160}▓▒░ The clone has failed.%f%b"
+    fi
 fi
 
 source "$HOME/.zinit/bin/zinit.zsh"
 autoload -Uz _zinit chpwd_recent_dirs cdr add-zsh-hook
 add-zsh-hook chpwd chpwd_recent_dirs
+# shellcheck disable=SC2034,SC2154
 (( ${+_comps} )) && _comps[zinit]=_zinit
 
 # Load a few important annexes, without Turbo
@@ -29,18 +31,33 @@ zinit light-mode for \
 
 zinit for \
     zdharma-continuum/history-search-multi-word \
-    zsh-users/zsh-completions \
-    light-mode pick"async.zsh" src"pure.zsh" \
-    sindresorhus/pure
+    zsh-users/zsh-completions
+
+## asdf
+if [ -f "$HOME/.asdf/asdf.sh" ]; then
+  zinit ice lucid as'program' src'asdf.sh'
+  zinit load asdf-vm/asdf
+fi
+
+## direnv
+if type direnv > /dev/null 2>&1; then
+  zinit ice lucid from'gh-r' as'program' mv'direnv* -> direnv' \
+      atclone'./direnv hook zsh > zhook.zsh' atpull'%atclone' \
+      pick'direnv' src='zhook.zsh'
+  zinit load direnv/direnv
+  export DIRENV_LOG_FORMAT=  # 標準出力を抑える
+  export DIRENV_WARN_TIMEOUT=1h  # venv 作成に時間が掛かると出てくる警告を抑える
+fi
 
 if [ -e /usr/local/share/zsh-completions ]; then
-  fpath=(/usr/local/share/zsh-completions $fpath)
+  fpath=(/usr/local/share/zsh-completions "$fpath")
 fi
 
 # zsh setting
 ## History
 HISTFILE=~/.zsh_history
 HISTSIZE=10000               # history size in memory
+# shellcheck disable=SC2034
 SAVEHIST=100000              # history size in file
 setopt hist_ignore_all_dups  # 重複するコマンド行は古い方を削除
 setopt hist_ignore_dups      # 直前と同じコマンドラインはヒストリに追加しない
@@ -73,15 +90,15 @@ zstyle ':completion:*' recent-dirs-insert both
 zstyle ':filter-select' case-insensitive yes
 
 # environment variables
-## for nodebrew
-export PATH=$HOME/.nodebrew/current/bin:$HOME/.nodebrew/current/lib/node_modules/npm/bin:./node_modules/.bin:$PATH
+## for word delete and move.
+export WORDCHARS="*?_[]~&;=!#$%^(){}<>"
 
 ## for flutter
 export PATH=$PATH:$HOME/flutter/bin
+## for dart tools
+export PATH="$PATH:$HOME/.pub-cache/bin"
 
 ## for go
-export GOPATH=$HOME/.go
-export PATH=$HOME/.go/bin:$PATH
 export GHQ_ROOT=$HOME/ghq
 
 ## for ruby
@@ -90,56 +107,76 @@ export GHQ_ROOT=$HOME/ghq
 ## for homebrew
 export PATH="/opt/homebrew/bin:/usr/local/sbin:$PATH"
 
-## for dart tools
-export PATH="$PATH":"$HOME/.pub-cache/bin"
-
-# Aliases
-alias ls='ls -G'
-alias rm='rm -i'
-alias gitback='git checkout `git reflog | grep "moving from" | cut -d " " -f6 | head -n 1`'
-alias bundler='bundle install --path=vendor/bundle --binstubs=vendor/bin'
-
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_OPTS="--height 50% --layout=reverse --border"
 
 ## ghq cd
 function gcd() {
-  local distination=$(ghq list | fzf +m --query "$LBUFFER" --prompt="Select Repository > ")
+  local distination
+  distination=$(ghq list | fzf +m --query "$LBUFFER" --prompt="Select Repository > ")
   if [ "$distination" = "" ]; then
     zle redisplay
     return 1
   fi
-  cd $GHQ_ROOT/$distination
+  cd "$GHQ_ROOT/$distination" || exit
 }
 zle -N gcd
 bindkey '^j' gcd
 
 function fssh() {
   local sshLoginHost
-  sshLoginHost=`cat ~/.ssh/config | grep -i ^host | awk '{print $2}' | fzf`
+  sshLoginHost=$(grep -i ^host ~/.ssh/config | awk '{print $2}' | fzf)
 
   if [ "$sshLoginHost" = "" ]; then
     return 1
   fi
 
-  ssh ${sshLoginHost}
+  ssh "sshLoginHost"
 }
 
 function kx() {
-  local context=$(kubectl config get-contexts --no-headers=true | sed -e 's/^\*//' | awk '{print $1}' | fzf +m --query "$LBUFFER" --prompt="Select Kubernetes Context > ")
+  local context
+  context=$(kubectl config get-contexts --no-headers=true | sed -e 's/^\*//' | awk '{print $1}' | fzf +m --query "$LBUFFER" --prompt="Select Kubernetes Context > ")
   if [ "$context" = "" ]; then
     zle redisplay
     return 1
   fi
-  kubectl config use-context $context
+  kubectl config use-context "$context"
 }
 
 
 ## gcloud
 PATH=$HOME/google-cloud-sdk/bin:$PATH
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '$HOME/google-cloud-sdk/path.zsh.inc' ]; then . '$HOME/google-cloud-sdk/path.zsh.inc'; fi
+if [ -f "$HOME/google-cloud-sdk/path.zsh.inc" ]; then . "$HOME/google-cloud-sdk/path.zsh.inc"; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f '$HOME/google-cloud-sdk/completion.zsh.inc' ]; then . '$HOME/google-cloud-sdk/completion.zsh.inc'; fi
+if [ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/google-cloud-sdk/completion.zsh.inc"; fi
+
+## profile
+if [ -f "$HOME/.profile" ]; then . "$HOME/.profile"; fi
+
+# Aliases
+## ls
+if type exa > /dev/null 2>&1; then
+	alias ls='exa'
+else
+  alias ls='ls -G'
+fi
+
+## find
+if type fd > /dev/null 2>&1; then
+	alias find='fd'
+fi
+
+## cat
+if type bat > /dev/null 2>&1; then
+	alias cat='bat'
+fi
+
+## rm
+alias rm='rm -i'
+
+## ruby(bundler)
+alias bundler='bundle install --path=vendor/bundle --binstubs=vendor/bin'

@@ -1,0 +1,43 @@
+[[plugins]]
+repo = 'cohama/lexima.vim'
+on_i = 1
+
+[[plugins]]
+repo = 'AndrewRadev/switch.vim'
+on_i = 1
+hook_add = '''
+  let g:switch_mapping = "-"
+'''
+
+[[plugins]]
+repo = 'junegunn/vim-easy-align'
+on_i = 1
+hook_add = '''
+xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
+'''
+
+[[plugins]]
+repo = 'tomtom/tcomment_vim'
+on_i = 1
+
+[[plugins]]
+repo = 'tpope/vim-surround'
+on_i = 1
+
+# For Language
+
+[[plugins]]
+repo = 'alvan/vim-closetag'
+on_ft = 'html'
+hook_add = '''
+  let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.ejs,*.vue'
+  let g:closetag_xhtml_filenames = '*.xhtml,*.jsx'
+  let g:closetag_emptyTags_caseSensitive = 1
+  let g:closetag_shortcut = '>'
+  let g:closetag_close_shortcut = '<leader>>'
+'''
+
+[[plugins]]
+repo = 'mattn/emmet-vim'
+on_ft = 'html'

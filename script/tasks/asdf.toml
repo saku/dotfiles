@@ -1,0 +1,54 @@
+[tasks.setup_asdf]
+category = "asdf"
+description = "Setup asdf"
+run_task = { name = ["install_asdf"] }
+
+[tasks.update_asdf]
+category = "asdf"
+description = "Update asdf"
+script = [
+'''
+#!/usr/bin/env bash
+
+if !(type asdf > /dev/null 2>&1); then
+  source $HOME/.asdf/asdf.sh
+fi
+
+asdf update
+'''
+]
+
+[tasks.uninstall_asdf]
+category = "asdf"
+description = "Uninstall asdf"
+script = [
+'''
+#!/usr/bin/env bash
+
+rm -rf ${ASDF_DIR:-$HOME/.asdf} $HOME/.tool-versions
+'''
+]
+
+[tasks.install_asdf]
+private = true
+dependencies = ["dependencies_asdf"]
+script = [
+'''
+#!/usr/bin/env bash
+
+git clone https://github.com/asdf-vm/asdf.git $HOME/.asdf --branch v0.9.0
+mkdir -p $HOME/.config/zsh/completions
+ln -s $HOME/.asdf/completions/asdf.bash $HOME/.config/zsh/completions/asdf.zsh
+echo '. $HOME/.asdf/asdf.sh' >> $HOME/.bashrc
+'''
+]
+
+[tasks.dependencies_asdf.linux]
+private = true
+script = [
+'''
+#!/usr/bin/env bash
+
+sudo apt install -y curl git
+'''
+]
