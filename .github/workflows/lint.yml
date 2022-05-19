@@ -1,17 +1,16 @@
 name: lint
 
-on: push
-#on:
-#  schedule:
-#    - cron:  '0 0 * * *'
-#  push:
-#    branches:
-#      - master
-#  pull_request:
-#    types:
-#      - opened
-#      - synchronize
-#      - reopened
+on:
+  schedule:
+    - cron:  '0 0 * * *'
+  push:
+    branches:
+      - master
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
 
 jobs:
   lint:
