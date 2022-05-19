@@ -1,0 +1,23 @@
+name: macos
+
+on: push
+#on:
+#  schedule:
+#    - cron:  '0 0 * * *'
+#  push:
+#    branches:
+#      - master
+#  pull_request:
+#    types:
+#      - opened
+#      - synchronize
+#      - reopened
+
+jobs:
+  setup-macos:
+    runs-on: macos-latest
+    strategy:
+      fail-fast: false
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./.github/workflows/composite-action
