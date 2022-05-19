@@ -77,7 +77,9 @@ script = [
 set -eux -o pipefail
 
 if [ ! -d $HOME/.config/git/local ]; then
-  mkdir -p "$(cd $(dirname $HOME/.config/git) ; pwd -P)/local"
+  ls -al $HOME/.config
+  ls -al $HOME/.config/git
+  mkdir "$HOME/.config/git/local"
   touch $HOME/.config/git/local/config
 fi
 
