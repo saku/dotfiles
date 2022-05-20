@@ -64,7 +64,7 @@
   - bat
   - dapr
   - direnv
-  - exa
+  - exa (Only MacOS. [See issue](https://github.com/ogham/exa/issues/1068))
   - fd
   - fzf
   - ghq

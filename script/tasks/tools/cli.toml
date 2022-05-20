@@ -95,13 +95,24 @@ echo 'eval "$(direnv hook bash)"' >> $HOME/.profile
 ]
 
 # exa
-[tasks.install_exa]
+[tasks.install_exa.mac]
 private = true
 script = [
 '''
 #!/usr/bin/env bash
 
-cargo install exa
+brew install exa
+'''
+]
+
+[tasks.install_exa.linux]
+private = true
+script = [
+'''
+#!/usr/bin/env bash
+
+echo "Not support exa on linux now."
+# sudo apt install -y exa
 '''
 ]
 
