@@ -17,6 +17,7 @@ run_task = { name = [
   "install_skitch",
   "install_slack",
   "install_tableplus",
+  "install_vscode",
   "install_zoom",
 ] }
 
@@ -167,6 +168,16 @@ script = [
 #!/usr/bin/env bash
 
 brew install --cask tableplus
+'''
+]
+
+[tasks.install_vscode.mac]
+private = true
+script = [
+'''
+#!/usr/bin/env bash
+
+brew install --cask visual-studio-code
 '''
 ]
 
