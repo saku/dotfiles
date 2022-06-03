@@ -7,3 +7,6 @@
 # JetBrain tools
 .idea
 *.iml
+
+# for direnv
+.envrc
