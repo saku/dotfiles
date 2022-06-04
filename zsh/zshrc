@@ -158,6 +158,9 @@ if [ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/google-clou
 if [ -f "$HOME/.profile" ]; then . "$HOME/.profile"; fi
 
 # Aliases
+## git
+alias g='git'
+
 ## ls
 if type exa > /dev/null 2>&1; then
 	alias ls='exa'
