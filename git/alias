@@ -1,0 +1,8 @@
+[alias]
+  s = status
+  st = stash
+  co = checkout
+  cp = cherry-pick
+  rb = rebase
+  sw = switch
+
