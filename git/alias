@@ -1,6 +1,7 @@
 [alias]
   s = status
   st = stash
+  stp = stash pop
   co = checkout
   cp = cherry-pick
   rb = rebase
