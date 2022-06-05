@@ -66,12 +66,6 @@ hook_source = '''
 '''
 
 [[plugins]]
-repo = 'tpope/vim-fugitive'
-
-[[plugins]]
-repo = 'airblade/vim-gitgutter'
-
-[[plugins]]
 repo = 'vim-scripts/AnsiEsc.vim'
 
 [[plugins]]
@@ -87,19 +81,6 @@ hook_add = '''
 repo = 'glidenote/memolist.vim'
 hook_add = '''
   call RequirePlugin('memolist.vimrc')
-'''
-
-[[plugins]]
-repo = 'thinca/vim-quickrun'
-hook_add = '''
-  let g:quickrun_config = {
-  \ '_': {
-    \ 'runner': 'vimproc',
-  \ }
-  \ }
-
-  noremap <F4> :QuickRun<CR>
-  inoremap <F4> <Esc>:QuickRun<CR>
 '''
 
 [[plugins]]
@@ -154,27 +135,6 @@ hook_add = '''
           \ denite#do_map('toggle_select').'j'
   endfunction
 '''
-
-[[plugins]]
-repo = 'vim-scripts/open-browser.vim'
-hook_add = '''
-  let g:netrw_nogx = 1
-  nmap gx <Plug>(openbrowser-smart-search)
-  vmap gx <Plug>(openbrowser-smart-search)
-'''
-
-[[plugins]]
-repo = 'tyru/open-browser-github.vim'
-depends = 'open-browser.vim'
-hook_add = '''
-  let g:openbrowser_github_url_exists_check = 'ignore'
-'''
-
-[[plugins]]
-repo = 'mg979/vim-visual-multi'
-
-[[plugins]]
-repo = 'nicwest/vim-camelsnek'
 
 [[plugins]]
 repo = 'neoclide/coc.nvim'
