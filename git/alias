@@ -1,9 +1,9 @@
 [alias]
-  s = status
-  st = stash
-  stp = stash pop
+  br = branch
   co = checkout
   cp = cherry-pick
   rb = rebase
-  sw = switch
+  s = switch
+  st = stash
+  stp = stash pop
 

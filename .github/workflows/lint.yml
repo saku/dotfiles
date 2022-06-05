@@ -3,53 +3,53 @@ name: lint
 on:
   push:
   schedule:
-    - cron:  '0 0 * * *'
+    - cron: '0 0 * * *'
 
 jobs:
   lint:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
-    - name: Set up Python 3.x
-      uses: actions/setup-python@v3
-      with:
-        python-version: '3.x'
-        architecture: 'x64'
+      - name: Set up Python 3.x
+        uses: actions/setup-python@v3
+        with:
+          python-version: '3.x'
+          architecture: 'x64'
 
-    - name: Display Python version
-      run: python -c "import sys; print(sys.version)"
+      - name: Display Python version
+        run: python -c "import sys; print(sys.version)"
 
-    - name: Install required packages
-      run: |
-        sudo apt full-upgrade -y && sudo apt install -y shellcheck
-        pip install --upgrade pip
-        pip install vim-vint yamllint
-#        pip install vim-vint yamllint tomlcheck
+      - name: Install required packages
+        run: |
+          sudo apt full-upgrade -y && sudo apt install -y shellcheck
+          pip install --upgrade pip
+          pip install vim-vint yamllint
+#          pip install vim-vint yamllint tomlcheck
 
-    # Lint check
-    - name: Check script/install.sh
-      run: shellcheck ${GITHUB_WORKSPACE}/script/install.sh --exclude=SC1090,SC1091
+      # Lint check
+      - name: Check script/install.sh
+        run: shellcheck ${GITHUB_WORKSPACE}/script/install.sh --exclude=SC1090,SC1091
 
-    - name: Check .zshrc
-      run: shellcheck ${GITHUB_WORKSPACE}/zsh/zshrc --exclude=SC2148,SC1090,SC1091
+      - name: Check .zshrc
+        run: shellcheck ${GITHUB_WORKSPACE}/zsh/zshrc --exclude=SC2148,SC1090,SC1091
 
-#    - name: Check vimrc
-#      run: find $GITHUB_WORKSPACE -name "*.vimrc" | xargs vint -cst
+#      - name: Check vimrc
+#        run: find $GITHUB_WORKSPACE -name "*.vimrc" | xargs vint -cst
 
-    - name: Check yaml files
-      run: |
-        find $GITHUB_WORKSPACE -name "*.yml" | \
-          xargs yamllint -d "{ \
-            extends: relaxed, \
-            rules: { \
-              indentation: {spaces: 2}, \
-              line-length: {max: 100} \
-            } \
-          }"
+      - name: Check yaml files
+        run: |
+          find $GITHUB_WORKSPACE -name "*.yml" | \
+            xargs yamllint -d "{ \
+              extends: relaxed, \
+              rules: { \
+                indentation: {spaces: 2}, \
+                line-length: {max: 100} \
+              } \
+            }"
 
-#    - name: Check nvim/*.toml
-#      run: |
-#        find ${GITHUB_WORKSPACE}/nvim/*.toml -type f | \
-#          xargs -I {} ${GITHUB_WORKSPACE}/tomlcheck --file {}
+#      - name: Check nvim/*.toml
+#        run: |
+#          find ${GITHUB_WORKSPACE}/nvim/*.toml -type f | \
+#            xargs -I {} ${GITHUB_WORKSPACE}/tomlcheck --file {}

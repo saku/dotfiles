@@ -13,6 +13,9 @@
   g,re      再帰Grep
   viw       単語選択
   ctrl+__   コメントアウト
+  :g/hoge/d 正規表現に一致した行を削除
+  :v/hoge/d 正規表現に一致した行以外を削除
+  :jq       jqコマンドを実行
 
 # HTML
   cit       <div>text</div> => <div></div>
