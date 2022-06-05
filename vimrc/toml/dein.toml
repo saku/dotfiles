@@ -119,3 +119,33 @@ repo = 'vim-denops/denops.vim'
 
 [[plugins]]
 repo = 'Shougo/ddu.vim'
+hook_add = '''
+  call RequirePlugin('ddu.vimrc')
+'''
+
+[[plugins]]
+repo = 'Shougo/ddu-ui-ff'
+
+[[plugins]]
+repo = 'Shougo/ddu-kind-file'
+
+[[plugins]]
+repo = 'Shougo/ddu-source-file'
+
+[[plugins]]
+repo = 'Shougo/ddu-source-register'
+
+[[plugins]]
+repo = 'kuuote/ddu-source-mr'
+
+[[plugins]]
+repo = 'lambdalisue/mr.vim'
+
+[[plugins]]
+repo = 'shun/ddu-source-buffer'
+
+[[plugins]]
+repo = 'Shougo/ddu-filter-matcher_substring'
+
+[[plugins]]
+repo = 'Shougo/ddu-commands.vim'
