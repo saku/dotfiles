@@ -69,6 +69,9 @@ hook_source = '''
 repo = 'vim-scripts/AnsiEsc.vim'
 
 [[plugins]]
+repo = 'airblade/vim-gitgutter'
+
+[[plugins]]
 repo = 'Shougo/context_filetype.vim'
 
 [[plugins]]
