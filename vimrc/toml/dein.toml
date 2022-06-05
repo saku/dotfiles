@@ -56,8 +56,7 @@ hook_add = '''
 
   nnoremap <expr> <C-k> floaterm#buflist#first() == -1 ? '<Cmd>FloatermNew<CR>' : '<Cmd>FloatermToggle<CR>'
   inoremap <expr> <C-k> floaterm#buflist#first() == -1 ? '<Cmd>FloatermNew<CR>' : '<Cmd>FloatermToggle<CR>'
-'''
-hook_source = '''
+
   autocmd User FloatermOpen tnoremap <buffer> <silent> <C-k> <C-\><C-n>:FloatermToggle<CR>
   autocmd User FloatermOpen tnoremap <buffer> <silent> <C-t> <C-\><C-n>:FloatermNew<CR>
   autocmd User FloatermOpen tnoremap <buffer> <silent> <C-]> <C-\><C-n>:FloatermNext<CR>
