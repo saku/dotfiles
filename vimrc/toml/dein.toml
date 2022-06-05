@@ -56,8 +56,7 @@ hook_add = '''
 
   nnoremap <expr> <C-k> floaterm#buflist#first() == -1 ? '<Cmd>FloatermNew<CR>' : '<Cmd>FloatermToggle<CR>'
   inoremap <expr> <C-k> floaterm#buflist#first() == -1 ? '<Cmd>FloatermNew<CR>' : '<Cmd>FloatermToggle<CR>'
-'''
-hook_source = '''
+
   autocmd User FloatermOpen tnoremap <buffer> <silent> <C-k> <C-\><C-n>:FloatermToggle<CR>
   autocmd User FloatermOpen tnoremap <buffer> <silent> <C-t> <C-\><C-n>:FloatermNew<CR>
   autocmd User FloatermOpen tnoremap <buffer> <silent> <C-]> <C-\><C-n>:FloatermNext<CR>
@@ -69,13 +68,10 @@ hook_source = '''
 repo = 'vim-scripts/AnsiEsc.vim'
 
 [[plugins]]
-repo = 'Shougo/context_filetype.vim'
+repo = 'airblade/vim-gitgutter'
 
 [[plugins]]
-repo = 'Shougo/neoyank.vim'
-hook_add = '''
-  nmap <C-p> :Denite neoyank<CR>
-'''
+repo = 'Shougo/context_filetype.vim'
 
 [[plugins]]
 repo = 'glidenote/memolist.vim'
@@ -114,29 +110,6 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'Shougo/denite.nvim'
-depends = 'neomru.vim'
-if = 'has("nvim")'
-hook_add = '''
-  nnoremap <silent> ,b :<C-u>Denite buffer<CR>
-  autocmd FileType denite call s:denite_my_settings()
-  function! s:denite_my_settings() abort
-    nnoremap <silent><buffer><expr> <CR>
-          \ denite#do_map('do_action')
-    nnoremap <silent><buffer><expr> d
-          \ denite#do_map('do_action', 'delete')
-    nnoremap <silent><buffer><expr> p
-          \ denite#do_map('do_action', 'preview')
-    nnoremap <silent><buffer><expr> q
-          \ denite#do_map('quit')
-    nnoremap <silent><buffer><expr> i
-          \ denite#do_map('open_filter_buffer')
-    nnoremap <silent><buffer><expr> <Space>
-          \ denite#do_map('toggle_select').'j'
-  endfunction
-'''
-
-[[plugins]]
 repo = 'neoclide/coc.nvim'
 rev = 'release'
 hook_add = '''
@@ -148,3 +121,33 @@ repo = 'vim-denops/denops.vim'
 
 [[plugins]]
 repo = 'Shougo/ddu.vim'
+hook_add = '''
+  call RequirePlugin('ddu.vimrc')
+'''
+
+[[plugins]]
+repo = 'Shougo/ddu-ui-ff'
+
+[[plugins]]
+repo = 'Shougo/ddu-kind-file'
+
+[[plugins]]
+repo = 'Shougo/ddu-source-file'
+
+[[plugins]]
+repo = 'Shougo/ddu-source-register'
+
+[[plugins]]
+repo = 'kuuote/ddu-source-mr'
+
+[[plugins]]
+repo = 'lambdalisue/mr.vim'
+
+[[plugins]]
+repo = 'shun/ddu-source-buffer'
+
+[[plugins]]
+repo = 'Shougo/ddu-filter-matcher_substring'
+
+[[plugins]]
+repo = 'Shougo/ddu-commands.vim'
