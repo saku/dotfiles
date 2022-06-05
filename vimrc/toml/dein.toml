@@ -182,3 +182,9 @@ rev = 'release'
 hook_add = '''
   call RequirePlugin('coc.vimrc')
 '''
+
+[[plugins]]
+repo = 'vim-denops/denops.vim'
+
+[[plugins]]
+repo = 'Shougo/ddu.vim'
