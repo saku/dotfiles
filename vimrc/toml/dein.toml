@@ -25,20 +25,6 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'kassio/neoterm'
-hook_add = '''
-let g:neoterm_default_mod = 'botright'
-let g:neoterm_automap_keys = ',tt'
-let g:neoterm_autoinsert = 1
-let g:neoterm_size = 25
-nnoremap <C-k> :Ttoggle<CR>
-inoremap <C-k> <ESC>:Ttoggle<CR>
-tnoremap <C-k> <C-\><C-n>:Ttoggle<CR>
-tnoremap <silent> <ESC> <C-\><C-n>
-tnoremap <silent> jj <C-\><C-n>
-'''
-
-[[plugins]]
 repo = 'itchyny/lightline.vim'
 hook_add = '''
   call RequirePlugin('lightline.vimrc')
@@ -58,6 +44,25 @@ hook_add = '''
   call submode#map('bufmove', 'n', '', '<', '<C-w><')
   call submode#map('bufmove', 'n', '', '+', '<C-w>+')
   call submode#map('bufmove', 'n', '', '-', '<C-w>-')
+'''
+
+[[plugins]]
+repo = 'voldikss/vim-floaterm'
+on_cmd = 'FloatermNew'
+on_func = 'floaterm#'
+hook_add = '''
+  " exit してもウィンドウが残ると閉じないといけないので
+  let g:floaterm_autoclose = 1
+
+  nnoremap <expr> <C-k> floaterm#buflist#first() == -1 ? '<Cmd>FloatermNew<CR>' : '<Cmd>FloatermToggle<CR>'
+  inoremap <expr> <C-k> floaterm#buflist#first() == -1 ? '<Cmd>FloatermNew<CR>' : '<Cmd>FloatermToggle<CR>'
+'''
+hook_source = '''
+  autocmd User FloatermOpen tnoremap <buffer> <silent> <C-k> <C-\><C-n>:FloatermToggle<CR>
+  autocmd User FloatermOpen tnoremap <buffer> <silent> <C-t> <C-\><C-n>:FloatermNew<CR>
+  autocmd User FloatermOpen tnoremap <buffer> <silent> <C-]> <C-\><C-n>:FloatermNext<CR>
+  autocmd User FloatermOpen tnoremap <buffer> <silent> <C-[> <C-\><C-n>:FloatermPrev<CR>
+  autocmd QuitPre * FloatermKill!
 '''
 
 [[plugins]]
