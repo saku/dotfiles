@@ -4,6 +4,7 @@
   cp = cherry-pick
   m = merge
   p = push
+  pl = pull
   rb = rebase
   s = switch
   st = stash
