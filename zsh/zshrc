@@ -38,8 +38,8 @@ if [ -f "$HOME/.asdf/asdf.sh" ]; then
   zinit ice lucid as'program' src'asdf.sh'
   zinit load asdf-vm/asdf
 
-  if [ -n $ASDF_DIR ]; then
-    fpath=(${ASDF_DIR}/completions $fpath)
+  if [[ -n "$ASDF_DIR" ]]; then
+    fpath=(${ASDF_DIR}/completions "$fpath")
   elif [ -e /usr/local/share/zsh-completions ]; then
     fpath=(/usr/local/share/zsh-completions "$fpath")
   fi
