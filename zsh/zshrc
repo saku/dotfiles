@@ -51,8 +51,7 @@ if type direnv > /dev/null 2>&1; then
       atclone'./direnv hook zsh > zhook.zsh' atpull'%atclone' \
       pick'direnv' src='zhook.zsh'
   zinit load direnv/direnv
-  export DIRENV_LOG_FORMAT=  # 標準出力を抑える
-  export DIRENV_WARN_TIMEOUT=1h  # venv 作成に時間が掛かると出てくる警告を抑える
+  export DIRENV_WARN_TIMEOUT=1h  # env 作成に時間が掛かると出てくる警告を抑える
 fi
 
 # zsh setting

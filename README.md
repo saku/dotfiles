@@ -63,7 +63,7 @@
 - CLI
   - bat
   - dapr
-  - direnv
+  - direnv (via asdf)
   - exa (Only MacOS. [See issue](https://github.com/ogham/exa/issues/1068))
   - fd
   - fzf
