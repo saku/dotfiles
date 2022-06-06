@@ -39,9 +39,9 @@ if [ -f "$HOME/.asdf/asdf.sh" ]; then
   zinit load asdf-vm/asdf
 
   if [[ -n "$ASDF_DIR" ]]; then
-    fpath=(${ASDF_DIR}/completions "$fpath")
+    fpath=("$ASDF_DIR/completions" "${fpath[@]}")
   elif [ -e /usr/local/share/zsh-completions ]; then
-    fpath=(/usr/local/share/zsh-completions "$fpath")
+    fpath=(/usr/local/share/zsh-completions "${fpath[@]}")
   fi
 fi
 
