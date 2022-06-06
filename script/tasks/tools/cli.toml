@@ -72,25 +72,23 @@ private = true
 alias = "install_dapr"
 
 # direnv
-[tasks.install_direnv.mac]
+[tasks.install_direnv]
 private = true
 script = [
 '''
 #!/usr/bin/env bash
 
-brew install direnv
-'''
-]
+if !(type asdf > /dev/null 2>&1); then
+  source $HOME/.asdf/asdf.sh
+fi
 
-[tasks.install_direnv.linux]
-private = true
-script = [
-'''
-#!/usr/bin/env bash
+if [[ "asdf" != $(asdf plugin list | grep asdf) ]]; then 
+  asdf plugin add direnv
+fi
 
-sudo apt install -y direnv
-echo 'export EDITOR=nvim' >> $HOME/.profile
-echo 'eval "$(direnv hook bash)"' >> $HOME/.profile
+asdf install direnv latest
+asdf global direnv latest
+asdf direnv setup --shell zsh --version latest
 '''
 ]
 
