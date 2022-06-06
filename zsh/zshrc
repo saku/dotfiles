@@ -37,6 +37,12 @@ zinit for \
 if [ -f "$HOME/.asdf/asdf.sh" ]; then
   zinit ice lucid as'program' src'asdf.sh'
   zinit load asdf-vm/asdf
+
+  if [ -n $ASDF_DIR ]; then
+    fpath=(${ASDF_DIR}/completions $fpath)
+  elif [ -e /usr/local/share/zsh-completions ]; then
+    fpath=(/usr/local/share/zsh-completions "$fpath")
+  fi
 fi
 
 ## direnv
@@ -47,10 +53,6 @@ if type direnv > /dev/null 2>&1; then
   zinit load direnv/direnv
   export DIRENV_LOG_FORMAT=  # 標準出力を抑える
   export DIRENV_WARN_TIMEOUT=1h  # venv 作成に時間が掛かると出てくる警告を抑える
-fi
-
-if [ -e /usr/local/share/zsh-completions ]; then
-  fpath=(/usr/local/share/zsh-completions "$fpath")
 fi
 
 # zsh setting
@@ -183,3 +185,4 @@ alias rm='rm -i'
 
 ## ruby(bundler)
 alias bundler='bundle install --path=vendor/bundle --binstubs=vendor/bin'
+source "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/zshrc"
