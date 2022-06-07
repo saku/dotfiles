@@ -2,6 +2,7 @@
   br = branch
   co = checkout
   cp = cherry-pick
+  fo = fetch origin
   m = merge
   p = push
   pl = pull
