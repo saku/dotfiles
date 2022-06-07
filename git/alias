@@ -6,7 +6,9 @@
   m = merge
   p = push
   pl = pull
+  plm = pull --ff-only origin master
   rb = rebase
+  rbm = rebase -i origin/master
   s = switch
   st = stash
   stp = stash pop
