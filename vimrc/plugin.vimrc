@@ -11,5 +11,3 @@ function! s:vimrc_local(loc)
     source `=i`
   endfor
 endfunction
-
-call RequirePlugin('trans.vimrc')
