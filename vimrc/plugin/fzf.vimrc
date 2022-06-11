@@ -35,3 +35,5 @@ function! FZFOpenFileFunc(query)
         \ 'options': '-x +s --sort --prompt "> " --query=' . shellescape(a:query),
         \ 'down':    '40%'}))
 endfunction
+
+noremap gcd :call fzf#run(fzf#wrap({'source': 'ghq list --full-path', 'sink': 'cd' }))<CR>
