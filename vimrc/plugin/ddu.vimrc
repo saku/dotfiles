@@ -1,6 +1,6 @@
 call ddu#custom#patch_global({
     \   'ui': 'ff',
-    \   'sources': [{'name':'file','params':{}},{'name':'mr'},{'name':'register'},{'name':'buffer'}],
+    \   'sources': [{'name':'file','params':{}},{'name':'register'},{'name':'buffer'}],
     \   'sourceOptions': {
     \     '_': {
     \       'matchers': ['matcher_substring'],
@@ -35,11 +35,4 @@ function! s:ddu_filter_my_settings() abort
   \ <Cmd>close<CR>
 endfunction
 
-nnoremap <SID>[ug] <Nop>
-nmap ,u <SID>[ug]
-
-nnoremap <silent> <SID>[ug]m :<C-u>Ddu mr<CR>
-nnoremap <silent> <SID>[ug]b :<C-u>Ddu buffer<CR>
-nnoremap <silent> <SID>[ug]r :<C-u>Ddu register<CR>
-nnoremap <silent> <SID>[ug]n :<C-u>Ddu file -source-param-new -volatile<CR>
-nnoremap <silent> <SID>[ug]f :<C-u>Ddu file<CR>
+nnoremap <silent> <leader>b :<C-u>Ddu buffer<CR>

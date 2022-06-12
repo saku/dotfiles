@@ -14,7 +14,6 @@ hook_add = '''
   nnoremap <F9> :NERDTree ~/Downloads<CR>
   nnoremap <F8> :NERDTree ~/Desktop<CR>
   noremap dir :NERDTree<CR>
-  nnoremap sd :<C-u>tabnew<CR>:NERDTree<CR>
   let g:NERDTreeIgnore=['\.DS_Store$']
 '''
 
@@ -136,12 +135,6 @@ repo = 'Shougo/ddu-source-file'
 
 [[plugins]]
 repo = 'Shougo/ddu-source-register'
-
-[[plugins]]
-repo = 'kuuote/ddu-source-mr'
-
-[[plugins]]
-repo = 'lambdalisue/mr.vim'
 
 [[plugins]]
 repo = 'shun/ddu-source-buffer'
