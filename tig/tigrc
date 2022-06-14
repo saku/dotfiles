@@ -10,3 +10,7 @@ bind refs R ?git rebase -i %(branch)
 
 # stash
 bind stash U ?git stash push -u "%(prompt Enter stash comment: )"
+
+# push
+bind main P !git push origin
+bind status P !git push origin
