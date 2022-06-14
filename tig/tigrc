@@ -14,3 +14,16 @@ bind stash U ?git stash push -u "%(prompt Enter stash comment: )"
 # push
 bind main P !git push origin
 bind status P !git push origin
+
+# move keys
+bind generic g move-first-line
+
+bind generic G move-last-line
+bind main    G move-last-line
+
+bind generic <Ctrl-f> move-page-down
+bind generic <Ctrl-b> move-page-up
+
+bind generic l scroll-right
+bind generic h scroll-left
+
