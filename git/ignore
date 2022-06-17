@@ -10,3 +10,6 @@
 
 # for direnv
 .envrc
+
+# for VS code
+.vscode/
