@@ -3,6 +3,7 @@ noremap <silent> zzz :q!<CR>
 noremap :jq :%!jq '.'<CR>
 
 noremap <F10> :<C-u>sp<CR>:e<Space>~/dotfiles/vimrc/command<CR>
+noremap <silent> rr <Cmd>source<Space>$MYVIMRC<CR><Cmd>echo<Space>"Reload .vimrc!"<CR>
 
 nnoremap <C-w>n gt
 nnoremap <C-w>p gT
