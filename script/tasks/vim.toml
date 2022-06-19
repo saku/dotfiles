@@ -25,5 +25,11 @@ script = [
 #!/usr/bin/env bash
 
 ln -snfv $HOME/dotfiles/vimrc/vimrc $HOME/.vimrc
+
+# make coc-settings.json link
+if [ ! -d "$HOME/.vim"  ] ; then
+  mkdir $HOME/.vim
+fi
+ln -snfv $HOME/dotfiles/vimrc/coc-settings.json $HOME/.vim/coc-settings.json
 '''
 ]

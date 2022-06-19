@@ -1,0 +1,40 @@
+{
+  "rust-analyzer.enableCargoWatchOnStartup": "enabled",
+  "python.jediEnabled": false,
+  "python.linting.pylintEnabled": false,
+  "python.linting.flake8Enabled": true,
+  "python.linting.enabled": true,
+  "python.linting.flake8Args": [
+    "--ignore=E501,W503"
+  ],
+  "python.formatting.blackPath": ".venv/bin/black",
+  "python.formatting.provider": "black",
+  "languageserver": {
+    "kotlin": {
+      "command": "~/lsp/kotlin/server/bin/kotlin-language-server",
+      "filetypes": [
+        "kotlin"
+      ]
+    }
+  },
+  "intelephense": {
+    "diagnostics": {
+      "undefinedClassConstants": false,
+      "undefinedConstants": false,
+      "undefinedFunctions": false,
+      "undefinedMethods": false,
+      "undefinedProperties": false,
+      "undefinedTypes": false
+    },
+    "command": "intelephense",
+    "args": [
+      "--stdio"
+    ],
+    "filetypes": [
+      "php"
+    ],
+    "initializationOptions": {
+      "storagePath": "/tmp/intelephense"
+    }
+  }
+}
