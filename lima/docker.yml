@@ -59,6 +59,38 @@ probes:
       exit 1
     fi
   hint: See "/var/log/cloud-init-output.log". in the guest
+
+# The host agent implements a DNS server that looks up host names on the host
+# using the local system resolver. This means changing VPN and network settings
+# are reflected automatically into the guest, including conditional forward,
+# and mDNS lookup. By default only IPv4 addresses will be returned. IPv6 addresses
+# can only work when using a vmnet network interface and the host has working
+# IPv6 configured as well.
+hostResolver:
+  # 🟢 Builtin default: true
+  enabled: false
+  # 🟢 Builtin default: false
+  ipv6: null
+  # Static names can be defined here as an alternative to adding them to the hosts /etc/hosts.
+  # Values can be either other hostnames, or IP addresses. The host.lima.internal name is
+  # predefined to specify the gateway address to the host.
+  # 🟢 Builtin default: null
+  hosts:
+    # guest.name: 127.1.1.1
+    # host.name: host.lima.internal
+
+# If useHostResolver is false, then the following rules apply for configuring dns:
+# Explicitly set DNS addresses for qemu user-mode networking. By default qemu picks *one*
+# nameserver from the host config and forwards all queries to this server. On macOS
+# Lima adds the nameservers configured for the first host interface in service order,
+# that has an IPv4 address, to the list. In case this still doesn't work (e.g. VPN
+# setups), the servers can be specified here explicitly. If nameservers are specified
+# here, then the configuration from network preferences will be ignored.
+# 🟢 Builtin default: null
+dns:
+- 8.8.8.8
+# - 1.1.1.1
+# - 1.0.0.1
 portForwards:
 - guestSocket: "/run/user/{{.UID}}/docker.sock"
   hostSocket: "{{.Dir}}/sock/docker.sock"

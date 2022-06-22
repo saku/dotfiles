@@ -13,3 +13,7 @@
 
 # for VS code
 .vscode/
+
+# for asdf
+.tool-versions
+
