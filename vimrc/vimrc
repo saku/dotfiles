@@ -16,5 +16,8 @@ source ~/dotfiles/vimrc/filetype.vimrc
 " プラグイン設定
 source ~/dotfiles/vimrc/plugin.vimrc
 
+" カラー設定
+source ~/dotfiles/vimrc/colorscheme.vimrc
+
 syntax on
 filetype plugin indent on
