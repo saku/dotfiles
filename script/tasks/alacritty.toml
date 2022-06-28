@@ -3,12 +3,23 @@ category = "alacritty"
 description = "Setup alacritty"
 run_task = { name = ["clone_alacritty", "install_alacritty", "link_alacritty"] }
 
-[tasks.update_alacritty]
+[tasks.update_alacritty.mac]
+category = "alacritty"
+description = "Update alacritty"
+script = [
+'''
+#!/usr/bin/env bash
+
+brew upgrade --cask alacritty
+'''
+]
+
+[tasks.update_alacritty.linux]
 category = "alacritty"
 description = "Update alacritty"
 run_task = { name = ["pull_alacritty", "install_alacritty"] }
 
-[tasks.clone_alacritty]
+[tasks.clone_alacritty.linux]
 private = true
 script = [
 '''
@@ -40,9 +51,7 @@ script = [
 '''
 #!/usr/bin/env bash
 
-cd $HOME/alacritty
-make app
-cp -rf target/release/osx/Alacritty.app /Applications/
+brew install --cask alacritty
 '''
 ]
 
