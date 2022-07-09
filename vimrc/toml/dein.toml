@@ -18,12 +18,6 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'joshdick/onedark.vim'
-hook_add = '''
-  colorscheme onedark
-'''
-
-[[plugins]]
 repo = 'itchyny/lightline.vim'
 hook_add = '''
   call RequirePlugin('lightline.vimrc')
