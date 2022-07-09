@@ -21,6 +21,7 @@ function! RequirePlugin(path)
 endfunction
 
 let s:toml      = '~/dotfiles/vimrc/toml/dein.toml'
+let s:theme_toml = '~/dotfiles/vimrc/toml/dein_theme.toml'
 let s:lazy_toml = '~/dotfiles/vimrc/toml/dein_lazy.toml'
 let s:syntax_toml = '~/dotfiles/vimrc/toml/dein_syntax.toml'
 
@@ -29,6 +30,7 @@ if dein#load_state(s:dein_dir)
   call dein#begin(s:dein_dir)
 
   call dein#load_toml(s:toml, {'lazy': 0})
+  call dein#load_toml(s:theme_toml, {'lazy': 0})
   call dein#load_toml(s:lazy_toml, {'lazy': 0})
   call dein#load_toml(s:syntax_toml, {'lazy': 1})
 

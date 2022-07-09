@@ -10,4 +10,6 @@ if (has("termguicolors"))
 endif
 
 set background=dark
+colorscheme gruvbox
+set t_Co=256
 
