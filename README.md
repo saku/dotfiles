@@ -37,6 +37,15 @@
         -e GO_VERSION="1.18.2" \
         -e NODE_VERSION="16.14.0"
 （言語のバージョンは好きに指定してください）
+
+上記のコマンドがうまく実行できない場合には環境変数を事前にexportして実行してみてください。
+
+~/dotfiles $ export GIT_NAME="saku"
+~/dotfiles $ export GIT_EMAIL="example@example.com"
+~/dotfiles $ export PYTHON_VERSION="3.10.2"
+~/dotfiles $ export GO_VERSION="1.18.2"
+~/dotfiles $ export NODE_VERSION="16.14.0"
+~/dotfiles $ cargo make --makefile script/task.toml setup
 ```
 
 ## Tools
