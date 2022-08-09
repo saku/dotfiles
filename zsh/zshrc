@@ -91,6 +91,9 @@ zstyle ':completion:*' recent-dirs-insert both
 zstyle ':filter-select' case-insensitive yes
 
 # environment variables
+## for editor
+export EDITOR=vim
+
 ## for word delete and move.
 export WORDCHARS="*?_[]~&;=!#$%^(){}<>"
 
