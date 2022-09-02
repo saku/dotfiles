@@ -27,3 +27,5 @@ bind generic <Ctrl-b> move-page-up
 bind generic l scroll-right
 bind generic h scroll-left
 
+bind generic ? view-help
+bind generic w maximize
