@@ -92,7 +92,7 @@ zstyle ':filter-select' case-insensitive yes
 
 # environment variables
 ## for editor
-export EDITOR=vim
+# export EDITOR=vim
 
 ## for word delete and move.
 export WORDCHARS="*?_[]~&;=!#$%^(){}<>"
