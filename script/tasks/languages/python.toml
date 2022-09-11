@@ -1,7 +1,7 @@
 [tasks.setup_python]
 category = "languages"
 description = "Setup python"
-run_task = { name = ["install_python", "install_package_manager"] }
+run_task = { name = ["install_python"] }
 
 [tasks.update_pip]
 category = "languages"
@@ -72,16 +72,5 @@ source $HOME/.asdf/asdf.sh
 if [[ "python" != $(asdf plugin list | grep python) ]]; then 
   asdf plugin add python
 fi
-'''
-]
-
-[tasks.install_package_manager]
-private = true
-script = [
-'''
-#!/usr/bin/env bash
-
-source $HOME/.asdf/asdf.sh
-curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python -
 '''
 ]
