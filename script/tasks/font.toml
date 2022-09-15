@@ -16,7 +16,7 @@ mkdir -p "/tmp/${FONT_NAME}"
 cd "/tmp/${FONT_NAME}" || exit
 
 FILE_NAME=$(curl -sL "${ENDPOINT}" | jq -r '.assets[].name' | grep "${FONT_NAME}")
-curl -sL "$ENDPOINT" | jq -r '.assets[].browser_download_url' | grep "$FILE_NAME" | xargs curl -fsLJO
+curl --retry 3 -sL "$ENDPOINT" | jq -r '.assets[].browser_download_url' | grep "$FILE_NAME" | xargs curl -fsLJO
 unzip "$FILE_NAME"
 
 FILE_BASENAME=$(basename "$FILE_NAME" .zip)
