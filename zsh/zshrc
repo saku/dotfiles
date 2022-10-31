@@ -125,8 +125,11 @@ function gcd() {
   fi
   cd "$GHQ_ROOT/$distination" || exit
 }
-zle -N gcd
-bindkey '^j' gcd
+## I know widget enable and assign keymap, because when terminate by Ctrl+c then
+## print 'widgets can only be called when ZLE is active'.
+## See https://qiita.com/udzura/items/3f120b5e4733fe85078d
+# zle -N gcd
+# bindkey '^j' gcd
 
 function fssh() {
   local sshLoginHost
