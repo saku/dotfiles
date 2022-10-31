@@ -191,3 +191,7 @@ alias rm='rm -i'
 ## ruby(bundler)
 alias bundler='bundle install --path=vendor/bundle --binstubs=vendor/bin'
 source "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/zshrc"
+
+# For rancher desktop
+export PATH="$HOME/.rd/bin:$PATH"
+
