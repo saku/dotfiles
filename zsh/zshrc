@@ -91,6 +91,9 @@ zstyle ':completion:*' recent-dirs-insert both
 zstyle ':filter-select' case-insensitive yes
 
 # environment variables
+## for editor
+# export EDITOR=vim
+
 ## for word delete and move.
 export WORDCHARS="*?_[]~&;=!#$%^(){}<>"
 
@@ -122,8 +125,11 @@ function gcd() {
   fi
   cd "$GHQ_ROOT/$distination" || exit
 }
-zle -N gcd
-bindkey '^j' gcd
+## I know widget enable and assign keymap, because when terminate by Ctrl+c then
+## print 'widgets can only be called when ZLE is active'.
+## See https://qiita.com/udzura/items/3f120b5e4733fe85078d
+# zle -N gcd
+# bindkey '^j' gcd
 
 function fssh() {
   local sshLoginHost
@@ -185,3 +191,7 @@ alias rm='rm -i'
 ## ruby(bundler)
 alias bundler='bundle install --path=vendor/bundle --binstubs=vendor/bin'
 source "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/zshrc"
+
+# For rancher desktop
+export PATH="$HOME/.rd/bin:$PATH"
+

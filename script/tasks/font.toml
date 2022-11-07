@@ -1,14 +1,14 @@
 [tasks.setup_font]
-run_task = [{ name = ["download_PlemolJP_NF", "apply_font"] }]
+run_task = [{ name = ["download_PlemolJP_NFJ", "apply_font"] }]
 
-[tasks.download_PlemolJP_NF]
+[tasks.download_PlemolJP_NFJ]
 private = true
 script = [
 '''
 #!/usr/bin/env bash
 set -eux -o pipefail
 
-FONT_NAME='PlemolJP_NF'
+FONT_NAME='PlemolJP_NFJ'
 ENDPOINT='https://api.github.com/repos/yuru7/PlemolJP/releases/latest'
 
 mkdir -p "${HOME}/.fonts/${FONT_NAME}"
@@ -16,7 +16,7 @@ mkdir -p "/tmp/${FONT_NAME}"
 cd "/tmp/${FONT_NAME}" || exit
 
 FILE_NAME=$(curl -sL "${ENDPOINT}" | jq -r '.assets[].name' | grep "${FONT_NAME}")
-curl -sL "$ENDPOINT" | jq -r '.assets[].browser_download_url' | grep "$FILE_NAME" | xargs curl -fsLJO
+curl --retry 3 -sL "$ENDPOINT" | jq -r '.assets[].browser_download_url' | grep "$FILE_NAME" | xargs curl -fsLJO
 unzip "$FILE_NAME"
 
 FILE_BASENAME=$(basename "$FILE_NAME" .zip)
@@ -33,7 +33,7 @@ script = [
 #!/usr/bin/env bash
 set -eux -o pipefail
 
-FONT_NAME='PlemolJP_NF'
+FONT_NAME='PlemolJP_NFJ'
 
 if [ ! -d "$HOME/Library/Fonts" ]; then
   mkdir -p "$HOME"/Library/Fonts
@@ -50,7 +50,7 @@ script = [
 #!/usr/bin/env bash
 set -eux -o pipefail
 
-FONT_NAME='PlemolJP_NF'
+FONT_NAME='PlemolJP_NFJ'
 
 sudo apt install -y fontconfig
 fc-cache -f -v ${HOME}/.fonts/"$FONT_NAME"
