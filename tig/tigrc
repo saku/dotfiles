@@ -15,6 +15,9 @@ bind stash U ?git stash push -u "%(prompt Enter stash comment: )"
 bind main P !git push origin
 bind status P !git push origin
 
+# revert
+bind main ! ?git revert %(commit)
+
 # move keys
 bind generic g move-first-line
 
