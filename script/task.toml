@@ -25,7 +25,7 @@ run_task = [
     "setup_git",
     "setup_zsh",
     "setup_tmux",
-#    "setup_alacritty",
+    "setup_alacritty",
     "setup_asdf",
     "setup_languages",
     "install_tools",

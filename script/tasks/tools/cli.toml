@@ -82,13 +82,12 @@ if !(type asdf > /dev/null 2>&1); then
   source $HOME/.asdf/asdf.sh
 fi
 
-if [[ "asdf" != $(asdf plugin list | grep asdf) ]]; then 
+if [[ "direnv" != $(asdf plugin list | grep direnv) ]]; then 
   asdf plugin add direnv
+  asdf install direnv latest
+  asdf global direnv latest
+  asdf direnv setup --shell zsh --version latest
 fi
-
-asdf install direnv latest
-asdf global direnv latest
-asdf direnv setup --shell zsh --version latest
 '''
 ]
 
