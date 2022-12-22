@@ -17,3 +17,11 @@ disabled = true
 
 [gcloud]
 disabled = true
+
+[kubernetes]
+format = 'on [⛵ $context](dimmed green) '
+disabled = false
+
+[kubernetes.context_aliases]
+'gke_enec-shared-(?P<var_cluster>.+)-app.*' = 'enec-$var_cluster'
+
