@@ -185,6 +185,9 @@ if type bat > /dev/null 2>&1; then
 	alias cat='bat'
 fi
 
+## kubectl
+alias k='kubectl'
+
 ## rm
 alias rm='rm -i'
 
@@ -194,4 +197,7 @@ source "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/zshrc"
 
 # For rancher desktop
 export PATH="$HOME/.rd/bin:$PATH"
+
+## For kube
+export USE_GKE_GCLOUD_AUTH_PLUGIN=True
 
