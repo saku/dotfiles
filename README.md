@@ -3,24 +3,29 @@
 [![lint](https://github.com/saku/dotfiles/actions/workflows/lint.yml/badge.svg)](https://github.com/saku/dotfiles/actions/workflows/lint.yml)
 
 # dotfiles
-このリポジトリはsakuが愛用している設定のdotfilesです。  
-このdotfilesは数多くの優秀な同僚やエンジニアの知恵（via Google）を借りてできています。
 
-そのためお好きにforkしたり、一部を持っていったりしてもらってかまいません。  
-ですがLICENSEにある通り、もしよろしければあなたのdotfilesも公開してくれると嬉しいです。  
-みなさんのdotfilesにより育てられ、また誰かのdotfilesが育つキッカケとなれば幸いです。
+このリポジトリは saku が愛用している設定の dotfiles です。  
+この dotfiles は数多くの優秀な同僚やエンジニアの知恵（via Google）を借りてできています。
+
+そのためお好きに fork したり、一部を持っていったりしてもらってかまいません。  
+ですが LICENSE にある通り、もしよろしければあなたの dotfiles も公開してくれると嬉しいです。  
+みなさんの dotfiles により育てられ、また誰かの dotfiles が育つキッカケとなれば幸いです。
 
 ## CI Ready dotfiles
-このCI設定はlintおよびubuntu/mac環境でのセットアップ確認がCIにより自動で行われております。  
-ですが自身のデバッグ中でもGithub actionsでは通るのに仮想マシン内ではうまく動作しない、ということもあったのであくまで目安とお考えください。
+
+この CI 設定は lint および ubuntu/mac 環境でのセットアップ確認が CI により自動で行われております。  
+ですが自身のデバッグ中でも Github actions では通るのに仮想マシン内ではうまく動作しない、ということもあったのであくまで目安とお考えください。
 
 ## How to install
+
 ### Linux(Ubuntu)
-作者自身の環境がMacのため、Dockerコンテナでのみ検証している状態です。  
-そのため、Mac環境のみ実行コマンドを記載させていただきます。
+
+作者自身の環境が Mac のため、Docker コンテナでのみ検証している状態です。  
+そのため、Mac 環境のみ実行コマンドを記載させていただきます。
 
 ### MacOS
-前提としてXcode toolsをインストール済であるインストール直後の状態を想定したものとなります。
+
+前提として Xcode tools をインストール済であるインストール直後の状態を想定したものとなります。
 
 ```shell
 * $ git clone https://github.com/saku/dotfiles.git $HOME/dotfiles
@@ -33,22 +38,23 @@
 ~/dotfiles $ cargo make --makefile script/task.toml setup \
         -e GIT_NAME="saku" \
         -e GIT_EMAIL="example@example.com" \
-        -e PYTHON_VERSION="3.10.2" \
-        -e GO_VERSION="1.18.2" \
-        -e NODE_VERSION="16.14.0"
+        -e PYTHON_VERSION="3.11.1" \
+        -e GO_VERSION="1.19.4" \
+        -e NODE_VERSION="18.12.1"
 （言語のバージョンは好きに指定してください）
 
 上記のコマンドがうまく実行できない場合には環境変数を事前にexportして実行してみてください。
 
 ~/dotfiles $ export GIT_NAME="saku"
 ~/dotfiles $ export GIT_EMAIL="example@example.com"
-~/dotfiles $ export PYTHON_VERSION="3.10.2"
-~/dotfiles $ export GO_VERSION="1.18.2"
-~/dotfiles $ export NODE_VERSION="16.14.0"
+~/dotfiles $ export PYTHON_VERSION="3.11.1"
+~/dotfiles $ export GO_VERSION="1.19.4"
+~/dotfiles $ export NODE_VERSION="18.12.1"
 ~/dotfiles $ cargo make --makefile script/task.toml setup
 ```
 
 ## Tools
+
 下記のツールが設定込でインストールされます
 
 - shell
