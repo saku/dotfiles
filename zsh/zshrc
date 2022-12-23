@@ -185,6 +185,9 @@ if type bat > /dev/null 2>&1; then
 	alias cat='bat'
 fi
 
+## brew
+alias brew='env PATH="${PATH//.asdf/shims:/}" brew'
+
 ## kubectl
 alias k='kubectl'
 
