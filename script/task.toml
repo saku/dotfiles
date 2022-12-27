@@ -43,7 +43,7 @@ run_task = [
     "update_dotfiles",
     "update_asdf",
     "update_languages",
-#    "update_alacritty",
+    "update_alacritty",
     "update_tools",
     "update_starship",
     "update_docker-compose",
