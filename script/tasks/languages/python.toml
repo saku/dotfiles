@@ -45,7 +45,8 @@ script = [
 '''
 #!/usr/bin/env bash
 
-brew install readline xz
+echo "nothing to do!"
+# brew install readline xz
 '''
 ]
 
