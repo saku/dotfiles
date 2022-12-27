@@ -1,7 +1,7 @@
 extend = [
   { path = "tasks/alacritty.toml" },
   { path = "tasks/asdf.toml" },
-  { path = "tasks/docker.toml" },
+  # { path = "tasks/docker.toml" },
   { path = "tasks/dotfiles.toml" },
   { path = "tasks/zsh.toml" },
   { path = "tasks/font.toml" },
@@ -31,7 +31,7 @@ run_task = [
     "install_tools",
     "setup_starship",
     "setup_vim",
-    "setup_docker",
+    # "setup_docker",
     "setup_font",
     "cleanup",
   ] },
