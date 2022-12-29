@@ -6,6 +6,7 @@ private = true
 script = ['''
 #!/usr/bin/env bash
 
+echo "PATH: $PATH"
 brew install tmux
 ''']
 
