@@ -26,4 +26,4 @@ run_task = { name = [
   "update_go",
   "update_npm",
   "update_pip",
-], parallel = true }
+] }
