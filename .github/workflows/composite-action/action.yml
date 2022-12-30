@@ -3,24 +3,25 @@ description: "Checks out the repository and install tools"
 runs:
   using: "composite"
   steps:
-  - name: Run install.sh
-    shell: bash
-    run: ./script/install.sh
-  - name: Run setup task
-    shell: bash
-    env:
-      GIT_NAME: saku
-      GIT_EMAIL: example@example.com
-      PYTHON_VERSION: 3.10.2
-      GO_VERSION: 1.17.7
-      NODE_VERSION: 16.14.0
-    run: |
-      cargo make --makefile script/task.toml setup \
-        -e GIT_NAME="$GIT_NAME" \
-        -e GIT_EMAIL="$GIT_EMAIL" \
-        -e PYTHON_VERSION="$PYTHON_VERSION" \
-        -e GO_VERSION="$GO_VERSION" \
-        -e NODE_VERSION="$NODE_VERSION"
+    - name: Run install.sh
+      shell: bash
+      run: ./script/install.sh
+    - name: Run setup task
+      shell: bash
+      env:
+        GIT_NAME: saku
+        GIT_EMAIL: example@example.com
+        PYTHON_VERSION: 3.11.1
+        GO_VERSION: 1.19.4
+        NODE_VERSION: 18.12.1
+      run: |
+        cargo make --makefile script/task.toml setup \
+          -e GIT_NAME="$GIT_NAME" \
+          -e GIT_EMAIL="$GIT_EMAIL" \
+          -e PYTHON_VERSION="$PYTHON_VERSION" \
+          -e GO_VERSION="$GO_VERSION" \
+          -e NODE_VERSION="$NODE_VERSION"
+
 #  - name: Run update task
 #    shell: bash
 #    env:
