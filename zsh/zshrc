@@ -191,6 +191,9 @@ alias brew='env PATH="${PATH//.asdf/shims:/}" brew'
 ## kubectl
 alias k='kubectl'
 
+## terraform
+alias t='terraform'
+
 ## rm
 alias rm='rm -i'
 
