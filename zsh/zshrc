@@ -34,7 +34,7 @@ zinit for \
     zsh-users/zsh-completions
 
 # fpath for completions
-fpath=("$HOME/.zinit/completions" "$fpath")
+fpath=("$HOME/.zinit/completions" "${fpath[@]}")
 
 ## asdf
 if [ -f "$HOME/.asdf/asdf.sh" ]; then
@@ -210,6 +210,9 @@ export PATH="$HOME/.rd/bin:$PATH"
 ## For kube
 export USE_GKE_GCLOUD_AUTH_PLUGIN=True
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+if [ ! -e "$HOME/.zinit/completions/_kubectl" ]; then
+  kubectl completion zsh > "$HOME/.zinit/completions/_kubectl"
+fi
 
 ## For Docker.app
 if [ -e /Applications/Docker.app ]; then
