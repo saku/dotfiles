@@ -34,7 +34,7 @@ zinit for \
     zsh-users/zsh-completions
 
 # fpath for completions
-fpath=("$HOME/.zinit/completions" $fpath)
+fpath=("$HOME/.zinit/completions" "$fpath")
 
 ## asdf
 if [ -f "$HOME/.asdf/asdf.sh" ]; then
@@ -213,11 +213,11 @@ export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
 ## For Docker.app
 if [ -e /Applications/Docker.app ]; then
-  if [ ! -e $HOME/.zinit/completions/_docker ]; then
-    ln -s /Applications/Docker.app/Contents/Resources/etc/docker.zsh-completion $HOME/.zinit/completions/_docker
+  if [ ! -e "$HOME/.zinit/completions/_docker" ]; then
+    ln -s /Applications/Docker.app/Contents/Resources/etc/docker.zsh-completion "$HOME/.zinit/completions/_docker"
   fi
-  if [ ! -e $HOME/.zinit/completions/_docker-compose ]; then
-    ln -s /Applications/Docker.app/Contents/Resources/etc/docker-compose.zsh-completion $HOME/.zinit/completions/_docker-compose
+  if [ ! -e "$HOME/.zinit/completions/_docker-compose" ]; then
+    ln -s /Applications/Docker.app/Contents/Resources/etc/docker-compose.zsh-completion "$HOME/.zinit/completions/_docker-compose"
   fi
 fi
 
