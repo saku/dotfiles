@@ -11,6 +11,7 @@ else
 fi
 
 if [ $OS == "Linux" ]; then
+  sudo apt autoremove -y
   sudo apt update -y
   sudo apt upgrade -y
   sudo apt full-upgrade -y
