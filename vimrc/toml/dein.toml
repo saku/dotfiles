@@ -24,9 +24,6 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'Yggdroot/indentLine'
-
-[[plugins]]
 repo = 'kana/vim-submode'
 hook_add = '''
   call submode#enter_with('bufmove', 'n', '', 's>', '<C-w>>')
@@ -111,38 +108,3 @@ hook_add = '''
 
 [[plugins]]
 repo = 'vim-denops/denops.vim'
-
-[[plugins]]
-repo = 'Shougo/ddu.vim'
-hook_add = '''
-  call RequirePlugin('ddu.vimrc')
-'''
-
-[[plugins]]
-repo = 'Shougo/ddu-ui-ff'
-depends = ['ddu.vim']
-
-[[plugins]]
-repo = 'Shougo/ddu-kind-file'
-depends = ['ddu.vim']
-
-[[plugins]]
-repo = 'Shougo/ddu-source-file'
-depends = ['ddu.vim']
-
-[[plugins]]
-repo = 'Shougo/ddu-source-register'
-depends = ['ddu.vim']
-
-[[plugins]]
-repo = 'shun/ddu-source-buffer'
-depends = ['ddu.vim']
-
-[[plugins]]
-repo = 'Shougo/ddu-filter-matcher_substring'
-depends = ['ddu.vim']
-
-[[plugins]]
-repo = 'Shougo/ddu-commands.vim'
-depends = ['ddu.vim']
-
