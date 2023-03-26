@@ -8,9 +8,6 @@ repo = "joshdick/onedark.vim"
 repo = "morhetz/gruvbox"
 
 [[plugins]]
-repo = "ulwlu/elly.vim"
-
-[[plugins]]
 repo = "ghifarit53/tokyonight-vim"
 
 [[plugins]]
