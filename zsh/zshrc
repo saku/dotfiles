@@ -57,6 +57,13 @@ if type direnv > /dev/null 2>&1; then
   export DIRENV_WARN_TIMEOUT=1h  # env 作成に時間が掛かると出てくる警告を抑える
 fi
 
+## ssh-agent
+# Start SSH agent and load keys on login
+if [ -z "$(pgrep ssh-agent)" ]; then
+    eval "$(ssh-agent -s)"
+    ssh-add -A
+fi
+
 # zsh setting
 ## History
 HISTFILE=~/.zsh_history
@@ -128,33 +135,6 @@ function gcd() {
   fi
   cd "$GHQ_ROOT/$distination" || exit
 }
-## I know widget enable and assign keymap, because when terminate by Ctrl+c then
-## print 'widgets can only be called when ZLE is active'.
-## See https://qiita.com/udzura/items/3f120b5e4733fe85078d
-# zle -N gcd
-# bindkey '^j' gcd
-
-function fssh() {
-  local sshLoginHost
-  sshLoginHost=$(grep -i ^host ~/.ssh/config | awk '{print $2}' | fzf)
-
-  if [ "$sshLoginHost" = "" ]; then
-    return 1
-  fi
-
-  ssh "sshLoginHost"
-}
-
-function kx() {
-  local context
-  context=$(kubectl config get-contexts --no-headers=true | sed -e 's/^\*//' | awk '{print $1}' | fzf +m --query "$LBUFFER" --prompt="Select Kubernetes Context > ")
-  if [ "$context" = "" ]; then
-    zle redisplay
-    return 1
-  fi
-  kubectl config use-context "$context"
-}
-
 
 ## gcloud
 PATH=$HOME/google-cloud-sdk/bin:$PATH
