@@ -61,7 +61,7 @@ fi
 # Start SSH agent and load keys on login
 if [ -z "$(pgrep ssh-agent)" ]; then
     eval "$(ssh-agent -s)"
-    ssh-add -A
+    ssh-add --apple-load-keychain
 fi
 
 # zsh setting
