@@ -114,6 +114,7 @@ export PATH="$PATH:$HOME/.pub-cache/bin"
 
 ## for go
 export GHQ_ROOT=$HOME/ghq
+export GOROOT=$HOME/go
 
 ## for ruby
 [[ -d ~/.rbenv  ]] && export PATH=${HOME}/.rbenv/bin:${PATH} && eval "$(rbenv init -)"
