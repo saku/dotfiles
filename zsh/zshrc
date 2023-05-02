@@ -113,6 +113,8 @@ export PATH=$PATH:$HOME/flutter/bin
 export PATH="$PATH:$HOME/.pub-cache/bin"
 
 ## for go
+export GOPATH=$(go env GOPATH)
+export PATH="$GOPATH/bin:$PATH"
 export GHQ_ROOT=$HOME/ghq
 export GOROOT=$HOME/go
 
