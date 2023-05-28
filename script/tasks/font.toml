@@ -9,7 +9,7 @@ script = [
 set -eux -o pipefail
 
 brew tap homebrew/cask-fonts
-brew install font-plemol-jp-nfj
+brew install font-plemol-jp-nf
 '''
 ]
 
