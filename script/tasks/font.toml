@@ -20,7 +20,7 @@ script = [
 #!/usr/bin/env bash
 set -eux -o pipefail
 
-FONT_NAME='PlemolJP_NFJ'
+FONT_NAME='PlemolJP_NF'
 ENDPOINT='https://api.github.com/repos/yuru7/PlemolJP/releases/latest'
 
 mkdir -p "${HOME}/.fonts/${FONT_NAME}"

@@ -118,9 +118,6 @@ export GHQ_ROOT=$HOME/ghq
 ## for ruby
 [[ -d ~/.rbenv  ]] && export PATH=${HOME}/.rbenv/bin:${PATH} && eval "$(rbenv init -)"
 
-## for homebrew
-export PATH="$PATH:/opt/homebrew/bin:/usr/local/sbin"
-
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_OPTS="--height 50% --layout=reverse --border"
@@ -208,4 +205,16 @@ fi
 export PNPM_HOME="$HOME/Library/pnpm"
 export PATH="$PNPM_HOME:$PATH"
 # pnpm end
+
+# php
+export PATH="/opt/homebrew/opt/bison/bin:$PATH"
+
+# psql
+export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
+
+# dart
+export PATH="$HOME/fvm/versions/3.10.2/bin:$PATH"
+
+## for homebrew
+export PATH="$PATH:/opt/homebrew/bin:/usr/local/sbin"
 
