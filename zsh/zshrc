@@ -218,3 +218,6 @@ export PATH="$HOME/fvm/versions/3.10.2/bin:$PATH"
 ## for homebrew
 export PATH="$PATH:/opt/homebrew/bin:/usr/local/sbin"
 
+## for aqua
+export PATH="${AQUA_ROOT_DIR:-${XDG_DATA_HOME:-$HOME/.local/share}/aquaproj-aqua}/bin:$PATH"
+
