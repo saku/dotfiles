@@ -11,9 +11,6 @@
 # for direnv
 .envrc
 
-# for VS code
-.vscode/
-
 # for asdf
 .tool-versions
 
