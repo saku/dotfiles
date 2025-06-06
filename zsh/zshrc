@@ -156,9 +156,9 @@ else
 fi
 
 ## find
-if type fd > /dev/null 2>&1; then
-	alias find='fd'
-fi
+#if type fd > /dev/null 2>&1; then
+#	alias find='fd'
+#fi
 
 ## cat
 if type bat > /dev/null 2>&1; then
@@ -220,4 +220,13 @@ export PATH="$PATH:/opt/homebrew/bin:/usr/local/sbin"
 
 ## for aqua
 export PATH="${AQUA_ROOT_DIR:-${XDG_DATA_HOME:-$HOME/.local/share}/aquaproj-aqua}/bin:$PATH"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"
+[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
+
+# Load local configurations
+for config in ~/.config/zsh/*.zsh; do
+  [ -r "$config"  ] && source "$config"
+done
 
