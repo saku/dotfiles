@@ -8,10 +8,13 @@
       "Bash(echo:*)",
       "Bash(git add:*)",
       "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(gh pr create:*)",
       "Bash(docker:*)",
       "Bash(mv:*)"
     ],
     "deny": [
+      "Bash(git push -f:*)",
       "Bash(rm -rf:*)"
     ]
   }
