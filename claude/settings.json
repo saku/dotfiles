@@ -5,6 +5,10 @@
       "Fetch(https://*)",
       "Bash(ls:*)",
       "Bash(grep:*)",
+      "Bash(echo:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(docker:*)",
       "Bash(mv:*)"
     ],
     "deny": [
