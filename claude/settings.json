@@ -14,6 +14,7 @@
       "Bash(mv:*)"
     ],
     "deny": [
+      "Bash(git tag:*)",
       "Bash(git push -f:*)",
       "Bash(rm -rf:*)"
     ]
