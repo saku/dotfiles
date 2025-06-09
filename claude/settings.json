@@ -5,6 +5,7 @@
       "Fetch(https://*)",
       "Bash(ls:*)",
       "Bash(grep:*)",
+      "Bash(find:*)",
       "Bash(echo:*)",
       "Bash(tr:*)",
       "Bash(git add:*)",
