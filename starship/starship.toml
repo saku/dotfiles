@@ -1,5 +1,38 @@
 add_newline = false
 
+# right_format = """
+# ${custom.tmux_pane}\
+# """
+right_format = """
+$nodejs\
+$python\
+$ruby\
+$golang\
+$rust\
+$php\
+$java\
+$kotlin\
+$swift\
+$terraform\
+$docker_context\
+$kubernetes\
+${custom.tmux_pane}\
+"""
+
+[custom.tmux_pane]
+command = '''
+if [ -n "$TMUX"  ]; then
+    pane_title=$(tmux display-message -p '#T')
+    if [ -n "$pane_title"  ] && [ "$pane_title" != "$(hostname)"  ]; then
+        echo "$pane_title"
+    else
+        echo "Pane-$(tmux display-message -p '#P')"
+    fi
+fi
+'''
+when = '[ -n "$TMUX"  ]'
+style = "bold red"
+
 [aws]
 disabled = true
 
@@ -21,7 +54,4 @@ disabled = true
 [kubernetes]
 format = 'on [⛵ $context\($namespace\)](dimmed green) '
 disabled = false
-
-[kubernetes.context_aliases]
-'gke_enec-shared-(?P<var_cluster>.+)-app.*' = 'enec-$var_cluster'
 
