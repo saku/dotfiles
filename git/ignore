@@ -17,5 +17,6 @@
 # for asdf
 .tool-versions
 
-
+# Claude code
 **/.claude/settings.local.json
+.mcp.json
