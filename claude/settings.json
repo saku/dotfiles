@@ -53,6 +53,9 @@
       "WebFetch(domain:reddit.com)",
       "WebFetch(domain:stackoverflow.com)",
       "WebFetch(domain:medium.com)",
+      "server-sequential-thinking",
+      "brave-search",
+      "postgresql-local",
       "List(*)"
     ],
     "deny": [
