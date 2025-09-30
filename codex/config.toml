@@ -1,0 +1,15 @@
+[projects."/Users/saku/ghq/github.com/yummy-guide/last-minute-japan"]
+trust_level = "trusted"
+
+[mcp_servers.playwright]
+command = "npx"
+args = ["@playwright/mcp@latest"]
+
+[mcp_servers.postgres_lm_local]
+command = "npx"
+args = ["-y", "@modelcontextprotocol/server-postgres", "postgresql://postgres:postgres@localhost:15432/last_minute_japan_development"]
+
+[mcp_servers.server_sequential_thinking]
+command = "npx"
+args = ["-y", "@modelcontextprotocol/server-sequential-thinking"]
+
