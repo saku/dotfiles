@@ -230,3 +230,6 @@ for config in ~/.config/zsh/env/*.zsh; do
   [ -r "$config"  ] && source "$config"
 done
 
+# Enable beep
+unsetopt no_beep
+
