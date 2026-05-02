@@ -34,5 +34,7 @@ private = true
 script = ['''
 #!/usr/bin/env bash
 
+mkdir -p $HOME/.config || echo 'already exist .config dir'
 ln -snfv $HOME/dotfiles/tmux/tmux.conf $HOME/.tmux.conf
+ln -snfv $HOME/dotfiles/tmux $HOME/.config/tmux
 ''']
