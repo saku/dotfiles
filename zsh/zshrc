@@ -240,7 +240,8 @@ export PATH="/Users/saku/.antigravity/antigravity/bin:$PATH"
 #   [ -r "$config"  ] && source "$config"
 # done
 # ~/.config/zsh/ 以下の全ての .zsh ファイルを再帰的に読み込む
-for func in ~/.config/zsh/**/*.zsh(N); do
-  [ -r "$func"  ] && source "$func"
-done
-
+if [ -d "$HOME/.config/zsh" ]; then
+  while IFS= read -r func; do
+    [ -r "$func"  ] && source "$func"
+  done < <(find "$HOME/.config/zsh" -type f -name '*.zsh' | sort)
+fi
