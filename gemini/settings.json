@@ -20,6 +20,14 @@
       "command": "npx",
       "args": ["-y", "@playwright/mcp@latest"]
     },
+    "analytics-mcp": {
+      "command": "pipx",
+      "args": ["run", "analytics-mcp"],
+      "env": {
+        "GOOGLE_APPLICATION_CREDENTIALS": "/Users/saku/.config/gcloud/application_default_credentials.json",
+        "GOOGLE_PROJECT_ID": "analytics-3290525ac65a"
+      }
+    },
     "postgresql-local": {
       "command": "npx",
       "args": ["-y", "@modelcontextprotocol/server-postgres", "postgresql://postgres:postgres@localhost:15432/last_minute_japan_development"]

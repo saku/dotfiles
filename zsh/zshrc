@@ -225,11 +225,23 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"
 [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
 
-# Load local configurations
-for config in ~/.config/zsh/env/*.zsh; do
-  [ -r "$config"  ] && source "$config"
-done
-
 # Enable beep
 unsetopt no_beep
+
+
+# Added by Antigravity
+export PATH="/Users/saku/.antigravity/antigravity/bin:$PATH"
+
+# Added by Antigravity
+export PATH="/Users/saku/.antigravity/antigravity/bin:$PATH"
+
+# Load local configurations
+# for config in ~/.config/zsh/env/*.zsh; do
+#   [ -r "$config"  ] && source "$config"
+# done
+# ~/.config/zsh/ 以下の全ての .zsh ファイルを再帰的に読み込む
+for func in ~/.config/zsh/**/*.zsh(N); do
+  [ -r "$func"  ] && source "$func"
+done
+
 
