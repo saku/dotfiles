@@ -2,17 +2,24 @@
 category = "tools"
 description = "Update GUI tools"
 run_task = { name = [
+  "install_alt-tab",
   "install_appcleaner",
+  "install_arc",
   "install_btt",
   "install_clipy",
   "install_contexts",
+  "install_codex",
   "install_discord",
+  "install_docker-desktop",
   "install_dropbox",
+  "install_gcloud-cli",
 #  "install_insomnia",
   "install_google-chrome",
 #  "install_google-japanese-ime",
+  "install_notion",
 #  "install_postman",
 #  "install_qblocker",
+  "install_raycast",
 #  "install_rectangle",
   "install_skitch",
   "install_slack",
@@ -21,6 +28,16 @@ run_task = { name = [
   "install_zoom",
 ] }
 
+[tasks.install_alt-tab.mac]
+private = true
+script = [
+'''
+#!/usr/bin/env bash
+
+brew install --cask alt-tab
+'''
+]
+
 [tasks.install_appcleaner.mac]
 private = true
 script = [
@@ -28,6 +45,16 @@ script = [
 #!/usr/bin/env bash
 
 brew install --cask appcleaner
+'''
+]
+
+[tasks.install_arc.mac]
+private = true
+script = [
+'''
+#!/usr/bin/env bash
+
+brew install --cask arc
 '''
 ]
 
@@ -61,6 +88,16 @@ brew install --cask contexts
 '''
 ]
 
+[tasks.install_codex.mac]
+private = true
+script = [
+'''
+#!/usr/bin/env bash
+
+brew install --cask codex
+'''
+]
+
 [tasks.install_discord.mac]
 private = true
 script = [
@@ -71,6 +108,16 @@ brew install --cask discord
 '''
 ]
 
+[tasks.install_docker-desktop.mac]
+private = true
+script = [
+'''
+#!/usr/bin/env bash
+
+brew install --cask docker-desktop
+'''
+]
+
 [tasks.install_dropbox.mac]
 private = true
 script = [
@@ -78,6 +125,16 @@ script = [
 #!/usr/bin/env bash
 
 brew install --cask dropbox
+'''
+]
+
+[tasks.install_gcloud-cli.mac]
+private = true
+script = [
+'''
+#!/usr/bin/env bash
+
+brew install --cask gcloud-cli
 '''
 ]
 
@@ -111,6 +168,16 @@ brew install --cask insomnia
 '''
 ]
 
+[tasks.install_notion.mac]
+private = true
+script = [
+'''
+#!/usr/bin/env bash
+
+brew install --cask notion
+'''
+]
+
 [tasks.install_postman.mac]
 private = true
 script = [
@@ -128,6 +195,16 @@ script = [
 #!/usr/bin/env bash
 
 brew install --cask qblocker
+'''
+]
+
+[tasks.install_raycast.mac]
+private = true
+script = [
+'''
+#!/usr/bin/env bash
+
+brew install --cask raycast
 '''
 ]
 
