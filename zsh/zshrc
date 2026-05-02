@@ -149,8 +149,8 @@ if [ -f "$HOME/.profile" ]; then . "$HOME/.profile"; fi
 alias g='git'
 
 ## ls
-if type exa > /dev/null 2>&1; then
-	alias ls='exa'
+if type eza > /dev/null 2>&1; then
+	alias ls='eza'
 else
   alias ls='ls -G'
 fi
@@ -243,5 +243,4 @@ export PATH="/Users/saku/.antigravity/antigravity/bin:$PATH"
 for func in ~/.config/zsh/**/*.zsh(N); do
   [ -r "$func"  ] && source "$func"
 done
-
 

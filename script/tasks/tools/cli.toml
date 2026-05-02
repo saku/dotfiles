@@ -5,7 +5,7 @@ run_task = { name = [
   "install_bat",
   "install_dapr",
   "install_direnv",
-  "install_exa",
+  "install_eza",
   "install_fd",
   "install_fzf",
   "install_ghq",
@@ -92,25 +92,25 @@ fi
 '''
 ]
 
-# exa
-[tasks.install_exa.mac]
+# eza
+[tasks.install_eza.mac]
 private = true
 script = [
 '''
 #!/usr/bin/env bash
 
-brew install exa
+brew install eza
 '''
 ]
 
-[tasks.install_exa.linux]
+[tasks.install_eza.linux]
 private = true
 script = [
 '''
 #!/usr/bin/env bash
 
-echo "Not support exa on linux now."
-# sudo apt install -y exa
+echo "Not support eza on linux now."
+# sudo apt install -y eza
 '''
 ]
 

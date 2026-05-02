@@ -73,7 +73,7 @@
   - bat (When install succeeded, alias for `cat`)
   - dapr
   - direnv (via asdf)
-  - exa (Only MacOS. [See issue](https://github.com/ogham/exa/issues/1068) When install succeeded, alias for `ls`.)
+  - eza (Only MacOS. When install succeeded, alias for `ls`.)
   - fd (When install succeeded, alias for `find`)
   - fzf
   - ghq
