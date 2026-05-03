@@ -8,8 +8,7 @@ script = [
 #!/usr/bin/env bash
 set -eux -o pipefail
 
-brew tap homebrew/cask-fonts
-brew install font-plemol-jp-nf
+brew install --cask font-plemol-jp-nf
 '''
 ]
 
