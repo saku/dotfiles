@@ -33,18 +33,18 @@
 ~/dotfiles $ cargo make --makefile script/task.toml setup \
         -e GIT_NAME="saku" \
         -e GIT_EMAIL="example@example.com" \
-        -e PYTHON_VERSION="3.10.2" \
-        -e GO_VERSION="1.18.2" \
-        -e NODE_VERSION="16.14.0"
+        -e PYTHON_VERSION="3.14.4" \
+        -e GO_VERSION="1.26.2" \
+        -e NODE_VERSION="24.15.0"
 （言語のバージョンは好きに指定してください）
 
 上記のコマンドがうまく実行できない場合には環境変数を事前にexportして実行してみてください。
 
 ~/dotfiles $ export GIT_NAME="saku"
 ~/dotfiles $ export GIT_EMAIL="example@example.com"
-~/dotfiles $ export PYTHON_VERSION="3.10.2"
-~/dotfiles $ export GO_VERSION="1.18.2"
-~/dotfiles $ export NODE_VERSION="16.14.0"
+~/dotfiles $ export PYTHON_VERSION="3.14.4"
+~/dotfiles $ export GO_VERSION="1.26.2"
+~/dotfiles $ export NODE_VERSION="24.15.0"
 ~/dotfiles $ cargo make --makefile script/task.toml setup
 ```
 
@@ -65,7 +65,6 @@
   - rust
 - editor
   - vim
-  - emacs (Only setting files, not install app)
 - development tools
   - docker
   - tig
@@ -86,12 +85,11 @@
 - GUI (MacOS only)
   - AppCleaner
   - Better touch tools
-  - Clipy
-  - Contexts
+  - Raycast
+  - Alt-tab
   - Discord
   - Dropbox
-  - Google Chrome
+  - Arc
   - Skitch
   - Slack
   - TablePlus
-  - Zoom
