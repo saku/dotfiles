@@ -73,7 +73,6 @@
   - dapr
   - direnv (via asdf)
   - eza (Only MacOS. When install succeeded, alias for `ls`.)
-  - fd (When install succeeded, alias for `find`)
   - fzf
   - ghq
   - git-delta

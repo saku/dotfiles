@@ -6,7 +6,6 @@ run_task = { name = [
   "install_dapr",
   "install_direnv",
   "install_eza",
-  "install_fd",
   "install_fzf",
   "install_ghq",
   "install_git-delta",
@@ -111,17 +110,6 @@ script = [
 
 echo "Not support eza on linux now."
 # sudo apt install -y eza
-'''
-]
-
-# fd
-[tasks.install_fd]
-private = true
-script = [
-'''
-#!/usr/bin/env bash
-
-cargo install fd-find 
 '''
 ]
 
