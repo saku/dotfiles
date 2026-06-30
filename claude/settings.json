@@ -68,18 +68,21 @@
       "Bash(git push -f:*)",
       "Bash(git tag:*)",
       "Bash(rm -rf:*)",
-      "Bash(terraform apply:*)"
+      "Bash(terraform apply:*)",
+      "Bash(gcloud:*)"
     ]
   },
-  "model": "opusplan",
+  "model": "opus[1m]",
   "enabledPlugins": {
     "gopls-lsp@claude-plugins-official": true,
     "example-skills@anthropic-agent-skills": true
   },
   "alwaysThinkingEnabled": true,
   "skipDangerousModePermissionPrompt": true,
+  "teammateMode": "tmux",
+  "agentPushNotifEnabled": true,
   "feedbackSurveyState": {
     "lastShownTime": 1754086694367
   },
-  "teammateMode": "tmux"
+  "tui": "fullscreen"
 }
