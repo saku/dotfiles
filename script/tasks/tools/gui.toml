@@ -4,9 +4,9 @@ description = "Update GUI tools"
 run_task = { name = [
   "install_alt-tab",
   "install_appcleaner",
-  "install_arc",
+  "install_dia",
   "install_btt",
-  "install_clipy",
+#  "install_clipy",
   "install_contexts",
   "install_codex",
   "install_discord",
@@ -14,8 +14,8 @@ run_task = { name = [
   "install_dropbox",
   "install_gcloud-cli",
 #  "install_insomnia",
-  "install_google-chrome",
-#  "install_google-japanese-ime",
+#  "install_google-chrome",
+  "install_google-japanese-ime",
   "install_notion",
 #  "install_postman",
 #  "install_qblocker",
@@ -23,7 +23,7 @@ run_task = { name = [
 #  "install_rectangle",
   "install_slack",
   "install_tableplus",
-  "install_vscode",
+#  "install_vscode",
   "install_zoom",
 ] }
 
@@ -47,13 +47,13 @@ brew install --cask appcleaner
 '''
 ]
 
-[tasks.install_arc.mac]
+[tasks.install_dia.mac]
 private = true
 script = [
 '''
 #!/usr/bin/env bash
 
-brew install --cask arc
+brew install --cask thebrowsercompany-dia
 '''
 ]
 
